@@ -1,5 +1,5 @@
 import './App.css'
-import { Route, Routes } from 'react-router'
+import {Route, Routes } from 'react-router-dom'
 import SignUpPage from './pages/sign-upPage/SignUpPage'
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
 
         }/>
 
-      </Routes>
+      </Routes>  
     </>
   )
 }
