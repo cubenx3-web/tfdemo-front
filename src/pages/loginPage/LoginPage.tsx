@@ -6,55 +6,50 @@ import {useNavigate } from "react-router-dom";
 function LoginPage(){
 
     const navigate = useNavigate();
-    const [email, setEmail] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
+
+    
+
+
+    const [eMsg, setEMsg] = useState<string>("")
     const [isEmpty, setIsEmpty] = useState<boolean>(false)
+
+    type valueType = {
+        email: string
+        password: string
+
+    }
+
+    const [values, setValues] = useState <valueType>({email:"", password:""});
 
     
     function inputHandler(event : React.ChangeEvent<HTMLInputElement>){
         
-        (event.target.name === "email")?       
-        setEmail(event.target.value)
-        :null;
+  
         
-        (event.target.name === "password")?    
-        setPassword(event.target.value)
-        :null;
-
+        setValues((prev)=>({
+            ...prev, 
+            [event.target.name] : event.target.value
+        }
+        ));
         setIsEmpty(false);
         
     }
 
     function onSubmit(){
-
-
-        if(!checkIsEmpty()){
-            console.log(email, password)
-            setEmail("");
-            setPassword("");
-
-        }
+       
         
+        console.log(values.email, values.password)
+
+                
         
     }
 
-    function checkIsEmpty(){
-      
-      let result:boolean = (email==="" || password ==="")? true : false;
-      if(result){
-        setIsEmpty(false);
-        setTimeout(()=>{
-            setIsEmpty(true)
-        }, 1); 
-        
-      }
-      return result;
-    }
+    
 
     return (
 
         <>
-            <div className="login-form">
+            <form onSubmit={onSubmit}  className="login-form">
                 <div className="login-head">
                   <h1 className="login-head">Login</h1>
                 </div>
@@ -67,7 +62,8 @@ function LoginPage(){
                     className="login-input" 
                     placeholder="Email Address..."
                     onChange={inputHandler}
-                    value={email}
+                    value={values.email}
+                    required
                     />  
                     <input 
                     type="password" 
@@ -75,13 +71,15 @@ function LoginPage(){
                     className="login-input" 
                     placeholder="Password..."
                     onChange={inputHandler}
-                    value={password}
+                    value={values.password}
+                    required
+
                     />
                     
                 </div>
 
                 <div className="login-submit">
-                    <button className="login-btn" onClick={onSubmit}>
+                    <button className="login-btn" type="submit">
                         Login
                     </button>
                 </div>
@@ -100,9 +98,9 @@ function LoginPage(){
 
 
     
-            </div>
+            </form>
 
-            <PopMsg show={isEmpty}/>   
+            <PopMsg show={isEmpty} msg={eMsg}/>   
 
         </>
         

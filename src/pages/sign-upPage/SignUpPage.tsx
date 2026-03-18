@@ -5,65 +5,68 @@ import PopMsg from "../../components/PopMsg";
 
 function SignUpPage(){
 
-    const [username, setUsername] = useState<string>("");
-    const [email, setEmail] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-    const [confirmPass, setConfirmPass] = useState<string>();
+    type valueType = {
+        username: string,
+        email: string,
+        password: string,
+        confirmPass: string
+    }
+
+    const [value, setValue] = useState<valueType>({
+        username:"",
+        email: "",
+        password:"",
+        confirmPass:""
+    })
+
+
     const [isEmpty, setIsEmpty] = useState<boolean>(false)
+    const [eMsg, setEMsg] = useState<string>("")
     const navigate = useNavigate();
     
     function inputHandler(event : React.ChangeEvent<HTMLInputElement>){
-        (event.target.name === "username")?     
-        setUsername(event.target.value)
-        :null;
         
-        (event.target.name === "email")?       
-        setEmail(event.target.value)
-        :null;
-        
-        (event.target.name === "password")?    
-        setPassword(event.target.value)
-        :null;
-        
-        (event.target.name === "confirmPass")? 
-        setConfirmPass(event.target.value)
-        :null;
-        
+        setValue((prev)=>({...prev, [event.target.name]:event.target.value}));                
         setIsEmpty(false)
 
     }
 
-    function submitHandler(){
+    function submitHandler( ){
         
-        if(!checkIsEmpty()){
-
-            console.log(username, email, password, confirmPass) 
-            setUsername("");
-            setEmail("");
-            setPassword("");
-            setConfirmPass("");
+        if(!inputChecker()){
+            console.log(value.username, value.email, value.password, value.confirmPass) 
+            
         };
         
     }
 
-    function checkIsEmpty(){
+    function inputChecker():boolean{
       
-      let result:boolean = (username=="" || email==="" || password ==="" || confirmPass==="")? true : false;
-      if(result){
+      let result:boolean = false;
+      if( !(value.password===value.confirmPass) ){
+
         setIsEmpty(false);
+        setEMsg("Password does not match!");
         setTimeout(()=>{
             setIsEmpty(true)
-        }, 1); 
-        
+        }, 10); 
+
+        result = true;
+
       }
+
       return result;
     }
+
+    
+
+
 
     
     return (
 
         <>
-            <div className="sign-up-form">
+            <form className="sign-up-form" onSubmit={submitHandler}>
                 <div className="sign-up-head">
                   <h1 className="sign-head"> Sign up</h1>
                 </div>
@@ -75,7 +78,8 @@ function SignUpPage(){
                     className="sign-up-input" 
                     placeholder="Username..."
                     onChange={inputHandler}
-                    value={username}
+                    value={value.username}
+                    required
                     />
                     <input 
                     type="email" 
@@ -83,7 +87,8 @@ function SignUpPage(){
                     className="sign-up-input" 
                     placeholder="Email Address..."
                     onChange={inputHandler}
-                    value={email}
+                    value={value.email}
+                    required
                     />  
                     <input 
                     type="password" 
@@ -91,7 +96,8 @@ function SignUpPage(){
                     className="sign-up-input" 
                     placeholder="Password..."
                     onChange={inputHandler}
-                    value={password}
+                    value={value.password}
+                    required
                     />
                     <input 
                     type="password"
@@ -99,12 +105,13 @@ function SignUpPage(){
                     className="sign-up-input" 
                     placeholder="Confirm Password..."
                     onChange={inputHandler}
-                    value={confirmPass}
+                    value={value.confirmPass}
+                    required
                     />
                 </div>
 
                 <div className="sign-up-submit">
-                    <button className="sign-up-btn" onClick={submitHandler}>
+                    <button className="sign-up-btn" type="submit">
                         Sign Up
                     </button>
                 </div>  
@@ -121,9 +128,9 @@ function SignUpPage(){
                     </button>
                 </div>
 
-            </div>
+            </form>
 
-            <PopMsg show={isEmpty}/>
+            <PopMsg show={isEmpty} msg={eMsg}/>
 
         </>
                 
