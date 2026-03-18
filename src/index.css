@@ -17,11 +17,18 @@
 .page{ 
   height: var(--page-height);
   width: var(--page-width);
-  background-color: rgb(109, 166, 235);
   display:flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.sign-up-page{
+  background-color: rgb(109, 166, 235);
+}
+
+.login-page{
+  background-color: rgb(109, 166, 235);
 }
 
 

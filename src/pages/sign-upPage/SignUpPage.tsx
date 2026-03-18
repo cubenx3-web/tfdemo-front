@@ -1,11 +1,62 @@
-
+import { useState } from "react";
 import "./SignUpPage.css"
+import { useNavigate } from "react-router";
+import PopMsg from "../../components/PopMsg";
 
 function SignUpPage(){
 
-    return (
+    const [username, setUsername] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [confirmPass, setConfirmPass] = useState<string>();
+    const [isEmpty, setIsEmpty] = useState<boolean>(false)
+    const navigate = useNavigate();
+    
+    function inputHandler(event : React.ChangeEvent<HTMLInputElement>){
+        (event.target.name === "username")?     
+        setUsername(event.target.value)
+        :null;
         
-        <div className="sign-up-form">
+        (event.target.name === "email")?       
+        setEmail(event.target.value)
+        :null;
+        
+        (event.target.name === "password")?    
+        setPassword(event.target.value)
+        :null;
+        
+        (event.target.name === "confirmPass")? 
+        setConfirmPass(event.target.value)
+        :null;
+        
+        setIsEmpty(false)
+
+    }
+
+    function submitHandler(){
+        
+        (!checkIsEmpty()) ? console.log(username, email, password, confirmPass) : null;
+        
+    }
+
+    function checkIsEmpty(){
+      
+      let result:boolean = (username=="" || email==="" || password ==="" || confirmPass==="")? true : false;
+      if(result){
+        setIsEmpty(false);
+        setTimeout(()=>{
+            setIsEmpty(true)
+        }, 1); 
+        
+      }
+      return result;
+    }
+
+    
+    return (
+
+        <>
+            <div className="sign-up-form">
                 <div className="sign-up-head">
                   <h1 className="sign-head"> Sign up</h1>
                 </div>
@@ -13,39 +64,61 @@ function SignUpPage(){
                 <div className="sign-up-inputs">
                     <input 
                     type="text" 
+                    name="username"
                     className="sign-up-input" 
                     placeholder="Username..."
-                    value={""}
+                    onChange={inputHandler}
+                    value={username}
                     />
                     <input 
                     type="email" 
+                    name="email"
                     className="sign-up-input" 
                     placeholder="Email Address..."
-                    value={""}
+                    onChange={inputHandler}
+                    value={email}
                     />  
                     <input 
-                    type="passowrd" 
+                    type="password" 
+                    name="password"
                     className="sign-up-input" 
                     placeholder="Password..."
-                    value={""}
+                    onChange={inputHandler}
+                    value={password}
                     />
                     <input 
-                    type="password" 
+                    type="password"
+                    name="confirmPass" 
                     className="sign-up-input" 
                     placeholder="Confirm Password..."
-                    value={""}
+                    onChange={inputHandler}
+                    value={confirmPass}
                     />
                 </div>
 
                 <div className="sign-up-submit">
-                    <button className="sign-up-btn">
-                        Sign up
+                    <button className="sign-up-btn" onClick={submitHandler}>
+                        Sign Up
                     </button>
                 </div>  
-
                 
+                <div>
+                    <h5>
+                        or
+                    </h5>
+                </div>
+
+                <div >
+                    <button className="login-btn" onClick={() => (navigate("/login"))}>
+                        Already have an account
+                    </button>
+                </div>
 
             </div>
+
+            <PopMsg show={isEmpty}/>
+
+        </>
                 
     )
 

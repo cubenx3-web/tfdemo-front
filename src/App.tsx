@@ -1,18 +1,25 @@
-import './App.css'
 import {Route, Routes } from 'react-router-dom'
 import SignUpPage from './pages/sign-upPage/SignUpPage'
+import LoginPage from './pages/loginPage/LoginPage'
 
 function App() {
 
   return (
     <>
       <Routes>
-
-        <Route path='/' element={ <h1>Land in page</h1> }/>
         
+        <Route path='/' element={ 
+          
+           <div className='page sign-up-page'>
+              <SignUpPage/>
+           </div>
+
+        }/>
+
         <Route path='/login' element={ 
           
-            <div className='page'>
+            <div className='page login-page'>
+              <LoginPage/>
             </div>
           
         }/>
@@ -20,7 +27,7 @@ function App() {
 
         <Route path='/sign-up' element={ 
           
-           <div className='page'>
+           <div className='page sign-up-page'>
               <SignUpPage/>
            </div>
 
