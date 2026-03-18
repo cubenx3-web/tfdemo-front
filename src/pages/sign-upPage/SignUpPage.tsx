@@ -35,7 +35,14 @@ function SignUpPage(){
 
     function submitHandler(){
         
-        (!checkIsEmpty()) ? console.log(username, email, password, confirmPass) : null;
+        if(!checkIsEmpty()){
+
+            console.log(username, email, password, confirmPass) 
+            setUsername("");
+            setEmail("");
+            setPassword("");
+            setConfirmPass("");
+        };
         
     }
 

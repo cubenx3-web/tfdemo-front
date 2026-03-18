@@ -2,7 +2,7 @@
     position: absolute;
     padding: 10px;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.759);
+    background: rgb(255, 255, 255);
     top:80%;
     left:50%;
     opacity: 0;
@@ -27,12 +27,12 @@
     }
 
     10%{
-        transform: translate(0%, 50%);
+        transform: translate(20%, 50%);
         opacity: 1;
     }
 
     80%{
-        transform: translate(0%, 50%);
+        transform: translate(20%, 50%);
         opacity: 1;
     }
 

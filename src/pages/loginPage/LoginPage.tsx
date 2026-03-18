@@ -26,7 +26,16 @@ function LoginPage(){
     }
 
     function onSubmit(){
-        (!checkIsEmpty())?console.log(email, password): null;
+
+
+        if(!checkIsEmpty()){
+            console.log(email, password)
+            setEmail("");
+            setPassword("");
+
+        }
+        
+        
     }
 
     function checkIsEmpty(){
