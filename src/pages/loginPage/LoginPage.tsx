@@ -11,8 +11,9 @@ function LoginPage(){
     
 
 
-    const [eMsg] = useState<string>("")
+    const [eMsg, setEMsg] = useState<string>("")
     const [isEmpty, setIsEmpty] = useState<boolean>(false)
+    const [msgType, setMsgType] = useState<string>("error-msg")
 
     type valueType = {
         email: string
@@ -35,14 +36,31 @@ function LoginPage(){
         
     }
 
-    function onSubmit(e: FormEvent){
+    async function onSubmit(e: FormEvent){
         
 
         e.preventDefault();
         console.log(values.email, values.password)
-        loginHandler({email:values.email, password:values.password });
-                
-        
+        let login = await loginHandler({email:values.email, password:values.password })
+        if(login.isLogin){
+            setIsEmpty(false);
+            setEMsg(login.message);
+            setMsgType("normal-msg")
+            setTimeout(()=>{
+                setIsEmpty(true)
+            }, 1);
+
+            setTimeout(()=>{navigate("/dashboard") }, 1000)
+            
+        }
+        else{               
+            setIsEmpty(false);
+            setEMsg(login.message);
+            setMsgType("error-msg")
+            setTimeout(()=>{
+                setIsEmpty(true)
+            }, 10);    
+        }
     }
 
     
@@ -101,7 +119,7 @@ function LoginPage(){
     
             </form>
 
-            <PopMsg show={isEmpty} msg={eMsg}/>   
+            <PopMsg show={isEmpty} msg={eMsg} msgType={msgType}/>   
 
         </>
         

@@ -7,7 +7,11 @@ export const loginHandler = async (data: {email: string, password: string}) =>{
         
         console.log(response.data);
         localStorage.setItem("token",response.data.token);
-        return response.data.message;
+
+        return {
+            isLogin:true,
+            message:"login" 
+        };
 
     }   
     catch(e: any){
@@ -22,6 +26,9 @@ export const loginHandler = async (data: {email: string, password: string}) =>{
             console.log(data.message);
         }
 
-        return data.message;
+        return {
+            isLogin:false,
+            message:data.message 
+        };
     } 
 }

@@ -166,7 +166,7 @@ function SignUpPage(){
 
             </form>
 
-            <PopMsg show={isEmpty} msg={eMsg}/>
+            <PopMsg show={isEmpty} msg={eMsg} msgType="error-msg"/>
 
         </>
                 
