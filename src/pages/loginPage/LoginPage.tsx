@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import "./LoginPage.css";
 import PopMsg from "../../components/PopMsg";
 import {useNavigate } from "react-router-dom";
+import { loginHandler } from "../../service/LoginHandler";
 
 function LoginPage(){
 
@@ -10,7 +11,7 @@ function LoginPage(){
     
 
 
-    const [eMsg, setEMsg] = useState<string>("")
+    const [eMsg] = useState<string>("")
     const [isEmpty, setIsEmpty] = useState<boolean>(false)
 
     type valueType = {
@@ -24,7 +25,6 @@ function LoginPage(){
     
     function inputHandler(event : React.ChangeEvent<HTMLInputElement>){
         
-  
         
         setValues((prev)=>({
             ...prev, 
@@ -35,11 +35,12 @@ function LoginPage(){
         
     }
 
-    function onSubmit(){
-       
+    function onSubmit(e: FormEvent){
         
-        console.log(values.email, values.password)
 
+        e.preventDefault();
+        console.log(values.email, values.password)
+        loginHandler({email:values.email, password:values.password });
                 
         
     }
@@ -92,7 +93,7 @@ function LoginPage(){
 
                 <div>
                     <button className="reg-btn" onClick={() => (navigate("/sign-up"))}>
-                        register
+                        Create Account
                     </button>
                 </div>
 

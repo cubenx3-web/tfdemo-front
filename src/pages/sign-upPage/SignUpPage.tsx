@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import "./SignUpPage.css"
 import { useNavigate } from "react-router";
 import PopMsg from "../../components/PopMsg";
+import { signUpHandler } from "../../service/SignUpHandler";
 
 function SignUpPage(){
 
@@ -31,12 +32,37 @@ function SignUpPage(){
 
     }
 
-    function submitHandler( ){
+    async function submitHandler(e:FormEvent ){
+        e.preventDefault()
+        
         
         if(!inputChecker()){
-            console.log(value.username, value.email, value.password, value.confirmPass) 
+           const res:any = await signUpHandler(
+                {
+                    username: value.username, 
+                    email: value.email, 
+                    password: value.password
+                }
+            )
+
+            console.log(res.error, res.message)
+
+            if(!res.error){
+                console.log(value.username, value.email, value.password, value.confirmPass) 
+                setValue(
+                    (prev)=>({...prev, username:"", email:"", password:"", confirmPass:""})
+                )
+                navigate("/login")
+            }
+
+            setIsEmpty(false);
+            setEMsg(res.message);
+            setTimeout(()=>{
+            setIsEmpty(true)
+            }, 10);
+
             
-        };
+        }
         
     }
 
@@ -50,16 +76,25 @@ function SignUpPage(){
         setTimeout(()=>{
             setIsEmpty(true)
         }, 10); 
-
         result = true;
 
       }
+     
+      if(value.password.length < 5){
+         setIsEmpty(false);
+        setEMsg("Use at least 6 characters!");
+        setTimeout(()=>{
+            setIsEmpty(true)
+        }, 10);
+        
+        result = true;
+      }
+
 
       return result;
     }
 
     
-
 
 
     
@@ -111,7 +146,8 @@ function SignUpPage(){
                 </div>
 
                 <div className="sign-up-submit">
-                    <button className="sign-up-btn" type="submit">
+                    
+                    <button className="sign-up-btn" type="submit" >
                         Sign Up
                     </button>
                 </div>  
