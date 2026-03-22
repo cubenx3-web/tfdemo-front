@@ -6,9 +6,7 @@
     display: grid;
     grid-template-rows: 1fr 5fr;
     align-items: center;
-    position: relative;
-    overflow-x: hidden;
-    overflow-y: visible;
+    position:relative;
 
 }
 
@@ -20,13 +18,31 @@
 }
 
 .slider-toggle{
+    display: flex;
     position:absolute;
-    left: 90%;
+    left:95%;
     top: 10%;
     width: 30px;
     height: 30px;
     background-color: grey;
+    border-radius:10px;
+    align-items: center;
+    justify-content: center;
+    transform-origin: 50% 50%;
+    transition: all 0.1s ease;
 }
+
+.slider-toggle:hover{
+    background-color: white;
+}
+
+
+
+.close{
+    transform: rotate(180deg);
+}
+
+
 
 
 .nav-container{

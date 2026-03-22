@@ -1,7 +1,9 @@
 import {MdSpaceDashboard} from "react-icons/md"
 import { useNavigate } from "react-router-dom"
+import {  IoIosArrowBack } from "react-icons/io";
+import { useState } from "react";
+
 import "./SliderNav.css"
-import { FaArrowRight } from "react-icons/fa";
 
 function SliderNav(){
 
@@ -17,6 +19,15 @@ function SliderNav(){
 
     ]
 
+    const [close, setClose] = useState<string>("");
+
+    function sliderState(){
+        setClose(
+            (prev)=>(
+                (prev==="")? "close":""
+            )
+        )
+    }
 
     return(
      
@@ -26,8 +37,10 @@ function SliderNav(){
                 <h1>Slider head</h1>
             </div>
 
-            <div className="slider-toggle">
-                <FaArrowRight size={30}/>
+            <div className={`slider-toggle ${close}`}
+                 onClick={sliderState}                    
+            >
+                <IoIosArrowBack size={30}/>
             </div>
 
             <div className="nav-container">
