@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import "./LoginPage.css";
-import PopMsg from "../../components/PopMsg";
+import PopMsg from "../../components/pop msg/PopMsg";
 import {useNavigate } from "react-router-dom";
 import { loginHandler } from "../../service/LoginHandler";
 
@@ -44,7 +44,7 @@ function LoginPage(){
         let login = await loginHandler({email:values.email, password:values.password })
         if(login.isLogin){
             setIsEmpty(false);
-            setEMsg(login.message);
+            setEMsg("Login Successfully");
             setMsgType("normal-msg")
             setTimeout(()=>{
                 setIsEmpty(true)

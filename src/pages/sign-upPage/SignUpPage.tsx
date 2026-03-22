@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 import "./SignUpPage.css"
 import { useNavigate } from "react-router";
-import PopMsg from "../../components/PopMsg";
+import PopMsg from "../../components/pop msg/PopMsg";
 import { signUpHandler } from "../../service/SignUpHandler";
 
 function SignUpPage(){
@@ -23,7 +23,9 @@ function SignUpPage(){
 
     const [isEmpty, setIsEmpty] = useState<boolean>(false)
     const [eMsg, setEMsg] = useState<string>("")
+    const [msgType, setMsgType] = useState<string>("error-msg")
     const navigate = useNavigate();
+
     
     function inputHandler(event : React.ChangeEvent<HTMLInputElement>){
         
@@ -49,17 +51,28 @@ function SignUpPage(){
 
             if(!res.error){
                 console.log(value.username, value.email, value.password, value.confirmPass) 
-                setValue(
-                    (prev)=>({...prev, username:"", email:"", password:"", confirmPass:""})
-                )
-                navigate("/login")
-            }
+                
 
-            setIsEmpty(false);
-            setEMsg(res.message);
-            setTimeout(()=>{
-            setIsEmpty(true)
-            }, 10);
+                setIsEmpty(false);
+                setEMsg("Account created successfully");
+                setMsgType("normal-msg");
+                setTimeout(()=>{
+                    setIsEmpty(true)
+                },1)
+                
+                setTimeout(()=>{navigate("/login")}, 1000)
+                
+
+            }
+            else{
+                setIsEmpty(false);
+                setEMsg(res.message);
+                setMsgType("error-msg");
+                setTimeout(()=>{
+                    setIsEmpty(true)
+                }, 10);
+            }
+                
 
             
         }
@@ -73,6 +86,7 @@ function SignUpPage(){
 
         setIsEmpty(false);
         setEMsg("Password does not match!");
+        setMsgType("error-msg")
         setTimeout(()=>{
             setIsEmpty(true)
         }, 10); 
@@ -83,6 +97,7 @@ function SignUpPage(){
       if(value.password.length < 5){
          setIsEmpty(false);
         setEMsg("Use at least 6 characters!");
+        setMsgType("error-msg");
         setTimeout(()=>{
             setIsEmpty(true)
         }, 10);
@@ -166,7 +181,7 @@ function SignUpPage(){
 
             </form>
 
-            <PopMsg show={isEmpty} msg={eMsg} msgType="error-msg"/>
+            <PopMsg show={isEmpty} msg={eMsg} msgType={msgType}/>
 
         </>
                 

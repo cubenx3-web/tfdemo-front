@@ -1,0 +1,64 @@
+
+.dashboard-page{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+  
+}
+
+
+
+.dash-container{
+    background-color: cyan;
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.dash-head{
+    background-color: rgb(160, 160, 243);
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 80% 20%;
+
+}
+
+.dash-title{
+    display: flex;
+    justify-content: start;
+    margin-left: 10%;
+}
+
+.logout-container{
+    display: flex;
+    justify-content: end;
+}
+
+.logout-btn{
+    background: white;
+    padding: 10px;
+    width: 60px;
+    left: 80%;
+    border-radius: 2rem;
+    font-weight:500px;
+    border: none;
+}
+
+.logout-btn:hover{
+    scale: 1.1;
+    background-color: wheat;
+}
+
+.dash-components{
+    background-color: lightcoral;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}

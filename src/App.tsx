@@ -13,7 +13,7 @@ function App() {
         <Route path='/dashboard' element={ 
 
             <ProtectedRoutes>
-              <div className='page '>
+              <div className='page dashboard-page'>
                 <Dashboard/>
               </div>
             </ProtectedRoutes>          
