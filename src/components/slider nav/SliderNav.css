@@ -1,13 +1,24 @@
 .slider-container{
-    background-color: pink;
-    width:30%;
+    background-color: rgb(64, 65, 67);
+    color: white;
+    width:20%;
     height: 100%;
     padding: 0px;
     display: grid;
-    grid-template-rows: 1fr 5fr;
+    grid-template-rows: 1fr 5fr; 
     align-items: center;
+    justify-content: center;
     position:relative;
+    transition: all 0.3s ease-in;
+}
 
+.slider-close{
+    width: 10%;
+}
+
+.slider-close h3{
+    opacity: 0;
+    display: none;
 }
 
 .slider-head{
@@ -17,28 +28,33 @@
     height: 80%;
 }
 
+
+
 .slider-toggle{
     display: flex;
     position:absolute;
-    left:95%;
+    left:90%;
     top: 10%;
     width: 30px;
     height: 30px;
     background-color: grey;
+    color: white;
     border-radius:10px;
     align-items: center;
     justify-content: center;
     transform-origin: 50% 50%;
-    transition: all 0.1s ease;
+    transition: all 0.5s ease;
 }
 
 .slider-toggle:hover{
     background-color: white;
+    color: gray;
 }
 
 
 
 .close{
+    left: 80%;
     transform: rotate(180deg);
 }
 
@@ -50,24 +66,30 @@
     flex-direction: column;
     height: 90%;
     width: 100%;
-    justify-content: start;
-    align-items: start;
+    align-items: center;
 }
 
 
 .nav{
     display:flex;
-    flex-direction: row;
-    gap: 5px;
-    justify-content: center;
-    align-items: center;
+    gap: 10px;
     cursor: pointer;
     width: 100%;
-    padding: 10px 0px;
-    transition: all 0.2s ease;
+    padding: 10px 10%;
+    transition: all 0.4s linear;
+}
+
+.nav h3{
+    transition: all 0.4s ease-out;
+}
+
+.slider-close .nav{
+    padding: 10px 60%;
+    justify-content: center;
 }
 
 .nav:hover{
-    background-color: rgba(128, 128, 128, 0.604);
+    background-color: rgba(107, 107, 107, 0.782);
     color: white;
+    scale: 1.1;
 }

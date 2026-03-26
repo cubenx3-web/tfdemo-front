@@ -1,4 +1,4 @@
-import {MdSpaceDashboard} from "react-icons/md"
+import { MdGroups, MdLocalActivity, MdMessage, MdSpaceDashboard, MdTask} from "react-icons/md"
 import { useNavigate } from "react-router-dom"
 import {  IoIosArrowBack } from "react-icons/io";
 import { useState } from "react";
@@ -12,32 +12,52 @@ function SliderNav(){
     const navs = [
         {
             icon: <MdSpaceDashboard size={30}/>,
-            nav:  "DashBoard",
+            nav:  "Dashboard",
             navLink: "/dashboard"
         },
+        {
+            icon: <MdGroups size={30}/>,
+            nav: "Group",
+            navLink: "/group" 
+        },
+        {
+            icon: <MdTask size={30}/>,
+            nav: "Tasks",
+            navLink: "/tasks" 
+        },
+        {
+            icon: <MdMessage size={30}/>,
+            nav: "Messages",
+            navLink: "/messages" 
+        },
+        {
+            icon: <MdLocalActivity size={30}/>,
+            nav: "Activities",
+            navLink: "/activities" 
+        }
         
 
     ]
 
-    const [close, setClose] = useState<string>("");
+    const [close, setClose] = useState<boolean>(false);
 
     function sliderState(){
         setClose(
             (prev)=>(
-                (prev==="")? "close":""
+                (prev===true)? false:true
             )
         )
     }
 
     return(
      
-        <div className="slider-container">
+        <div className={`slider-container ${(close)?"slider-close":""}`}>
             
             <div className="slider-head">
-                <h1>Slider head</h1>
+                <h1>TF</h1>
             </div>
 
-            <div className={`slider-toggle ${close}`}
+            <div className={`slider-toggle ${(close)?"close":""}`}
                  onClick={sliderState}                    
             >
                 <IoIosArrowBack size={30}/>
@@ -56,7 +76,7 @@ function SliderNav(){
                                 onClick={()=>navigate(nav.navLink)}
                             >
                                 {nav.icon}
-                                <h2>{nav.nav}</h2>
+                                <h3>{nav.nav}</h3>
                             </div>
                         )
                     )

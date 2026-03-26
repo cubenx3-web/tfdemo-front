@@ -21,7 +21,7 @@ function Dashboard(){
 
 
                     <div className="dash-title">
-                        <h1>Dashboard</h1>
+                        <h2>Dashboard</h2>
                     </div>
 
                     <div className="logout-container">
@@ -33,7 +33,18 @@ function Dashboard(){
                 </div>
 
                 <div className="dash-components">
-                   <h1>Dashboard-containers</h1>
+                   <div className="group-container">
+                        <div className="joined-group-container">
+
+                        </div>
+                        <div className="pending-join-container">
+
+                        </div>
+                        <div className="rejected-join-containder">
+
+                        </div>
+                        
+                   </div>
                 </div>
 
             </div>
