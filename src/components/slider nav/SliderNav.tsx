@@ -5,7 +5,12 @@ import { useState } from "react";
 
 import "./SliderNav.css"
 
-function SliderNav(){
+type propType = {
+    page: string,
+}
+
+
+function SliderNav( {page } : propType ){
 
     const navigate = useNavigate();
 
@@ -13,27 +18,27 @@ function SliderNav(){
         {
             icon: <MdSpaceDashboard size={30}/>,
             nav:  "Dashboard",
-            navLink: "/dashboard"
+            navLink: "/dashboard",
         },
         {
             icon: <MdGroups size={30}/>,
             nav: "Group",
-            navLink: "/group" 
+            navLink: "/group", 
         },
         {
             icon: <MdTask size={30}/>,
             nav: "Tasks",
-            navLink: "/tasks" 
+            navLink: "/tasks", 
         },
         {
             icon: <MdMessage size={30}/>,
             nav: "Messages",
-            navLink: "/messages" 
+            navLink: "/messages",
         },
         {
             icon: <MdLocalActivity size={30}/>,
             nav: "Activities",
-            navLink: "/activities" 
+            navLink: "/activities",
         }
         
 
@@ -72,7 +77,9 @@ function SliderNav(){
                         (
                             <div
                                 key={i} 
-                                className="nav"
+                                className={`nav 
+                                        ${(page.trim().toLowerCase() === nav.nav.trim().toLowerCase())?"active":""}
+                                    `}
                                 onClick={()=>navigate(nav.navLink)}
                             >
                                 {nav.icon}

@@ -1,10 +1,14 @@
 import {Route, Routes } from 'react-router-dom'
 import SignUpPage from './pages/sign-upPage/SignUpPage'
 import LoginPage from './pages/loginPage/LoginPage'
-import ProtectedRoutes from './ProtectedRoutes'
+import ProtectedRoutes from './security/ProtectedRoutes'
 import Dashboard from './pages/dashboard/Dashboard'
+import Group from './pages/group/Group'
+
 
 function App() {
+
+  
 
   return (
     <>
@@ -13,14 +17,23 @@ function App() {
         <Route path='/dashboard' element={ 
 
             <ProtectedRoutes>
-              <div className='page dashboard-page'>
+              <div className='page'>
                 <Dashboard/>
               </div>
             </ProtectedRoutes>          
 
-            
+        }/>
+
+        <Route path='/group' element={ 
+
+            <ProtectedRoutes>
+              <div className='page'>
+                <Group/>
+              </div>
+            </ProtectedRoutes>          
 
         }/>
+
 
         <Route path='/login' element={ 
           

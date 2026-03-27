@@ -1,38 +1,23 @@
-import { useNavigate } from "react-router";
 import "./Dashboard.css"
 import SliderNav from "../../components/slider nav/SliderNav";
+import Header from "../../components/header/Header";
 
 function Dashboard(){
 
-    let navigate = useNavigate();
+    
 
-    function logout(){
-        localStorage.removeItem("token");
-        navigate("/login");
-    }   
+       
 
     return(
         <>
-            <SliderNav/>
+            <SliderNav page = "dashboard"/>
 
             <div className="dash-container">
 
-                <div className="dash-head"> 
+                <Header title="Dashboard"/>
+                
 
-
-                    <div className="dash-title">
-                        <h2>Dashboard</h2>
-                    </div>
-
-                    <div className="logout-container">
-                        <button className="logout-btn" onClick={logout}>
-                            logout
-                        </button>
-                    </div>
-                    
-                </div>
-
-                <div className="dash-components">
+                <div className="components-container">
                    <div className="group-container">
                         <div className="joined-group-container">
 
@@ -42,8 +27,7 @@ function Dashboard(){
                         </div>
                         <div className="rejected-join-containder">
 
-                        </div>
-                        
+                        </div>                        
                    </div>
                 </div>
 

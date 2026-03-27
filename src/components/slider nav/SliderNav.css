@@ -9,11 +9,12 @@
     align-items: center;
     justify-content: center;
     position:relative;
-    transition: all 0.3s ease-in;
+    transition: all 1s ease-out;
 }
 
-.slider-close{
-    width: 10%;
+.slider-close {
+    max-width: 10%;
+    transition: all 1s ease-out;
 }
 
 .slider-close h3{
@@ -27,8 +28,6 @@
     justify-content: center;;
     height: 80%;
 }
-
-
 
 .slider-toggle{
     display: flex;
@@ -51,15 +50,10 @@
     color: gray;
 }
 
-
-
 .close{
-    left: 80%;
+    left: 85%;
     transform: rotate(180deg);
 }
-
-
-
 
 .nav-container{
     display:flex;
@@ -69,23 +63,28 @@
     align-items: center;
 }
 
-
 .nav{
     display:flex;
     gap: 10px;
     cursor: pointer;
     width: 100%;
-    padding: 10px 10%;
-    transition: all 0.4s linear;
+    padding: 10px 15%;
+    transition: all 0.3s ease-out;
 }
 
 .nav h3{
+    font-size: medium;
     transition: all 0.4s ease-out;
 }
 
 .slider-close .nav{
-    padding: 10px 60%;
+    padding: 10px 100%;
     justify-content: center;
+}
+
+.active{
+    background-color: rgba(107, 107, 107, 0.782);
+    color: white;
 }
 
 .nav:hover{
@@ -93,3 +92,5 @@
     color: white;
     scale: 1.1;
 }
+
+
