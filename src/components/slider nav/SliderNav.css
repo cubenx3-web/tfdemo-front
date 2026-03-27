@@ -84,8 +84,10 @@
 }
 
 .active{
+    opacity: 0;
     background-color: rgba(107, 107, 107, 0.782);
     color: white;
+    transition: all 0.3s ease-out
 }
 
 .nav:hover{
