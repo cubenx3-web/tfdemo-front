@@ -14,7 +14,7 @@ export function expTime () {
     if(token){
         const decode = jwtDecode(token) 
         const expTime = (Number(decode.exp)*1000) - Date.now()
-        return 50000;
+        return expTime;
     }
     else{
         return 0;
