@@ -1,5 +1,5 @@
 import LoginPage from "./pages/LoginPage"
-import { Navigate, Route, Routes } from "react-router"
+import { Navigate, Route, Routes } from "react-router-dom"
 import SignUpPage from "./pages/SignUpPage"
 import DashBoardPage from "./pages/DashboardPage"
 import ProtectedRoutes from "./security/ProtectedRoutes"

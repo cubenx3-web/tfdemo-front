@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BiLogOut, BiMessage, BiTask } from "react-icons/bi";
 import { CgArrowLeft } from "react-icons/cg";
 import { MdDashboard, MdGroup } from "react-icons/md";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import logo from"../../images/logo1.png" 
 import { GiHamburgerMenu } from "react-icons/gi";
 import { logout } from "../service/LogoutHandler";
