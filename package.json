@@ -1,6 +1,5 @@
 {
-  "homepage": "https://github.com/cubenx3-web/tfdemo-front",
-  "name": "tfdemo2",
+  "name": "tfdemo",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.4",
