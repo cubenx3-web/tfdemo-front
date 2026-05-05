@@ -2,7 +2,6 @@ import LoginPage from "./pages/LoginPage"
 import { Navigate, Route, Routes } from "react-router-dom"
 import SignUpPage from "./pages/SignUpPage"
 import DashBoardPage from "./pages/DashboardPage"
-import ProtectedRoutes from "./security/ProtectedRoutes"
 
 function App() {
 
@@ -29,14 +28,10 @@ function App() {
         {/* DASHBOARD PAGE */}
         <Route path="/" element={<Navigate to="/Dashboard"/>} />
         
-        <Route path="/Dashboard" element={
-          
-          <ProtectedRoutes>
+        <Route path="/Dashboard" element={ 
             <div className="relative flex  w-full h-full text-lg transition-all duration-300 ease-in-out font-semibold bg-white  ">
                 <DashBoardPage/>          
             </div>
-          </ProtectedRoutes>
-         
         }/>  
         
 

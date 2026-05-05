@@ -7,7 +7,7 @@ function ProtectedRoutes({children}:any){
             setTimeout(logout, expTime());
         }
         else{
-            logout()
+            setTimeout(logout, 3600000);
         }
     } , [])
 

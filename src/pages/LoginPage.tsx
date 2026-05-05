@@ -3,7 +3,6 @@ import { BiUser } from "react-icons/bi";
 import {MdLockOutline, MdOutlineEmail } from "react-icons/md";
 import { useNavigate } from "react-router";
 import PopMsg from "../components/PopMsg";
-import { loginHandler } from "../service/LoginHandler";
 
 function LoginPage(){
 
@@ -39,12 +38,10 @@ function LoginPage(){
     async function submitHandler(e:FormEvent){
         e.preventDefault(); 
 
-        let login = await loginHandler(values);
-        
-        setMsg(login.message);
-        (login.isLogin)?setMsgType("normal") : setMsgType("error");
+        setMsg("Welcome Back");
+        setMsgType("normal");
         setIsShow(true);
-        (login.isLogin)?(setTimeout(() => {navigate("/Dashboard")},1000)):null
+        (setTimeout(() => {navigate("/Dashboard")},1000))
 
     }
 

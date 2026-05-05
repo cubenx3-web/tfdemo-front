@@ -4,7 +4,6 @@ import { BiUser } from "react-icons/bi";
 import { MdLockOutline, MdOutlineEmail, MdPassword } from "react-icons/md";
 import { useNavigate } from "react-router";
 import PopMsg from "../components/PopMsg";
-import { signUpHandler } from "../service/SignUpHandler";
 
 function SignUpPage(){
 
@@ -41,21 +40,15 @@ function SignUpPage(){
     async function submitHandler(e: FormEvent){
         e.preventDefault();
 
-        const reg:any = (values.password === values.confirmPass && values.password.length >= 6 )? await signUpHandler({username:values.username, email:values.email, password:values.password}):null;
         
-        (values.password.length < 6)? setMsg("Use at least 6 Characters"): setMsg("Passwords do not match ")
         
-        setMsgType("error")
-
-        if (reg!==null){
-            setMsg(reg.message)
-            setMsgType((reg.isReg)?"success": "error")    
-        }
-        
+        (values.password.length < 6)? (setMsg("Use at least 6 Characters"), setMsgType("error")): 
+                (values.password.length < 6)? (setMsg("Passwords do not match "), setMsgType("error")):
+                (setMsgType("success"), setMsg("Account Created"),(setTimeout(()=>{navigate("/login")},2000)) )
         
         setIsShow(true);
         
-        (reg!==null && reg.isReg )? setTimeout(()=>{navigate("/login")},2000):null;
+        
         
 
     }
