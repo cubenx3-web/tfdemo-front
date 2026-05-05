@@ -4,7 +4,7 @@ const API = axios.create({
     baseURL: "http://localhost:8080/api/v1/auth"
 });
 
-// LOGIN 
+// LOGIN
 export const loginUser = ( data: {email:string, password:string}) =>{
     return API.post("/login",data)
 }
