@@ -3,7 +3,7 @@ import { registerUser } from "../api/Auth"
 
 export const signUpHandler = async (data: {username: string, email: string, password: string})=>{
      type resType = {
-            error: boolean,
+            isReg: boolean,
             message: string
         }
 
@@ -12,12 +12,13 @@ export const signUpHandler = async (data: {username: string, email: string, pass
         console.log(response.data.message);
        
         const res : resType = {
-            error: false,
+            isReg: true,
             message: response.data.message
 
         }
         return res
     }
+
     catch(e:any){
         const status:number = e.response?.status;
         const response = e.response?.data
@@ -27,7 +28,7 @@ export const signUpHandler = async (data: {username: string, email: string, pass
         }
         
         const res : resType = {
-            error: true,
+            isReg: false,
             message: response.message
 
         }

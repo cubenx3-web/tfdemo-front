@@ -1,23 +1,22 @@
 import { jwtDecode } from "jwt-decode";
-import { Navigate } from "react-router-dom";
 
-export const logout = () =>{
+export function logout(){
     localStorage.removeItem("token");
     window.location.href = "/login";
-    <Navigate to={"/login"}/>
 }
 
-export function expTime () {
+export function expTime(){
+    const token = localStorage.getItem("token");
 
-    const token = localStorage.getItem("token")
-    
     if(token){
-        const decode = jwtDecode(token) 
+        const decode = jwtDecode(token);
+        console.log(decode)
+        
         const expTime = (Number(decode.exp)*1000) - Date.now()
         return expTime;
     }
     else{
-        return 0;
+        return 0
     }
 
 }

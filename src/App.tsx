@@ -1,58 +1,48 @@
-import {Route, Routes } from 'react-router-dom'
-import SignUpPage from './pages/sign-upPage/SignUpPage'
-import LoginPage from './pages/loginPage/LoginPage'
-import ProtectedRoutes from './security/ProtectedRoutes'
-import Dashboard from './pages/dashboard/Dashboard'
-import Group from './pages/group/Group'
-
+import LoginPage from "./pages/LoginPage"
+import { Navigate, Route, Routes } from "react-router"
+import SignUpPage from "./pages/SignUpPage"
+import DashBoardPage from "./pages/DashboardPage"
+import ProtectedRoutes from "./security/ProtectedRoutes"
 
 function App() {
 
-  
-
   return (
     <>
+
       <Routes>
+
+        {/* LOGIN PAGE */}
+        <Route path='/login' element ={
+          <div className="relative flex w-full h-full bg-blue-300 justify-center items-center text-lg">
+            <LoginPage/>          
+          </div>
+        }/>
+
+        {/* REGISTRATION PAGE */}
+        <Route path='/sign-up' element ={
+          <div className="relative flex w-full h-full bg-blue-300 justify-center items-center text-lg">
+            <SignUpPage/>          
+          </div>
+        }/>
+
+
+        {/* DASHBOARD PAGE */}
+        <Route path="/" element={<Navigate to="/Dashboard"/>} />
         
-        <Route path='/dashboard' element={ 
-
-            <ProtectedRoutes>
-              <div className='page'>
-                <Dashboard/>
-              </div>
-            </ProtectedRoutes>          
-
-        }/>
-
-        <Route path='/group' element={ 
-
-            <ProtectedRoutes>
-              <div className='page'>
-                <Group/>
-              </div>
-            </ProtectedRoutes>          
-
-        }/>
-
-
-        <Route path='/login' element={ 
+        <Route path="/Dashboard" element={
           
-            <div className='page login-page'>
-              <LoginPage/>
+          <ProtectedRoutes>
+            <div className="relative flex  w-full h-full text-lg transition-all duration-300 ease-in-out font-semibold bg-white  ">
+                <DashBoardPage/>          
             </div>
-          
-        }/>
-  
+          </ProtectedRoutes>
+         
+        }/>  
+        
 
-        <Route path='/sign-up' element={ 
-          
-           <div className='page sign-up-page'>
-              <SignUpPage/>
-           </div>
+      </Routes>
 
-        }/>
 
-      </Routes>  
     </>
   )
 }
