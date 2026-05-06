@@ -1,9 +1,9 @@
 import StatusCard from "../components/StatusCard";
 import Header from "../components/Header";
 import SideNav from "../components/SideNav";
-import { MdOutlineGroup, MdPendingActions} from "react-icons/md";
-import { IoTimerOutline } from "react-icons/io5";
-import { FaRegCircleCheck } from "react-icons/fa6";
+import {  MdOutlineFolderCopy, MdOutlineGroup} from "react-icons/md";
+import { LuFileStack } from "react-icons/lu";
+import { HiOutlineUserGroup } from "react-icons/hi2";
 
 
 export default function AdminDashPage(){
@@ -12,24 +12,24 @@ export default function AdminDashPage(){
             {
                 text:"Total Groups",
                 num: 0,
-                icon: <MdOutlineGroup />
+                icon: <HiOutlineUserGroup />
 
             },
             {
-                text:"Active Requests",
+                text:"Pending Requests",
                 num: 0,
-                icon: <IoTimerOutline />
+                icon: <MdOutlineGroup/>
 
             },
             {
                 text:"Projects",
                 num: 0,
-                icon: <MdPendingActions />
+                icon: <MdOutlineFolderCopy/>
             },
             {
                 text:"Tasks",
                 num: 0,
-                icon: <FaRegCircleCheck />
+                icon: <LuFileStack />
 
             },
     ]
@@ -38,10 +38,10 @@ export default function AdminDashPage(){
 
     return (
         <>
-            <SideNav active={"Dashboard"}/>
+            <SideNav active={"Admin"}/>
             <div className="relative flex-nowrap flex-14 space-y-2 w-full h-full place-items-center justify-center ">
                 
-                <Header heading={"Dashboard"}/>
+                <Header heading={"Admin Dashboard"}/>
                 <div className=" bg-[#e5e2e2] w-[98%] h-[90%] rounded-2xl "> 
 
                     {/* SUMMARY */}

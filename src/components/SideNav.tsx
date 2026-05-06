@@ -12,14 +12,14 @@ type Props = {
 }
 export default function SideNav(active: Props){
 
-    const [slideState, setSlideState] = useState <string>("open");
+    const [slideState, setSlideState] = useState <string>("closed");
     
     
 
     const sliderStyle: Record<string, {sliderIcon: string, sliderNav: string, navText: string, sliderIcon2:string}> = {
         "open": { 
             sliderIcon: "rotate-0",
-            sliderNav:"md:flex-2 w-[70%] max-sm:left-[5%] max-sm:w-[80%]",
+            sliderNav:"md:flex-3 w-[70%] max-sm:left-[5%] max-sm:w-[80%]",
             navText:"",
             sliderIcon2:"opacity-0"
         },
@@ -37,7 +37,7 @@ export default function SideNav(active: Props){
         )
     }
 
-``
+
     const navs = [
         {
             nav: "Dashboard",

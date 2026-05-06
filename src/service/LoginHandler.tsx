@@ -21,9 +21,11 @@ export const loginHandler = async (data: {email: string, password: string}) =>{
         localStorage.setItem("username", decode.username.toString())
 
         const isAdmin:boolean = decode.admin
-         
-        localStorage.setItem("isAdmin", JSON.stringify(isAdmin))
         
+        
+        localStorage.setItem("isAdmin", JSON.stringify(isAdmin))
+        localStorage.setItem("email", decode.sub.toString())
+
         return {
             isLogin:true,
             message:response.data.message 
