@@ -27,7 +27,7 @@ function App() {
 
 
         {/* DASHBOARD PAGE */}
-        <Route path="/" element={<Navigate to="/login"/>} />
+        <Route path="/" element={<Navigate to="/Dashboard"/>} />
         
         <Route path="/Dashboard" element={
           
