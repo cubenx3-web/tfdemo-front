@@ -4,6 +4,7 @@ import SignUpPage from "./pages/SignUpPage"
 import DashBoardPage from "./pages/DashboardPage"
 import ProtectedRoutes from "./security/ProtectedRoutes"
 import AdminDashPage from "./pages/AdminDashPage"
+import GroupDashPage from "./pages/GroupDashPage"
 
 function App() {
 
@@ -39,14 +40,28 @@ function App() {
           </ProtectedRoutes>
          
         }/>  
-        
+
+        {/* ADMIN DASHBOARD PAGE */}
         <Route path='/Admin' element ={
 
             <div className="relative flex  w-full h-full text-lg transition-all duration-300 ease-in-out font-semibold bg-white  " >
               <AdminDashPage/>
             </div>
 
-          }/>
+        }/>
+
+
+        {/* GROUP PAGE */}
+        <Route path="/Groups" element={
+          
+          <ProtectedRoutes>
+            <div className="relative flex  w-full h-full text-lg transition-all duration-300 ease-in-out font-semibold bg-white  ">
+                <GroupDashPage/>          
+            </div>
+          </ProtectedRoutes>
+         
+        }/>  
+        
 
 
       </Routes>

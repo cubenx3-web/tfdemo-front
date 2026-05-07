@@ -15,7 +15,7 @@ export default function StatusCard( details: Details ){
             <div className="place-self-start">{details.text} </div>
             <div className="place-self-start text-xl font-bold ">{details.num}</div>
             {
-                cloneElement(details.icon, {className:"text-blue-600 place-self-end", size:35})
+                (details.icon!=null)?cloneElement(details.icon, {className:"text-blue-600 place-self-end", size:35}):""
             }
             
         </div>
