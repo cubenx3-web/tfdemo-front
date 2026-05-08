@@ -9,20 +9,39 @@ const api = axios.create(
 
 );
 
-export  const getJoinedGroups = async() =>{
+export  const getGroups = async() =>{
 
     const email = localStorage.getItem("email");
+    const token = localStorage.getItem("token");
 
-    return ( await api.get("/joined-group",
-        {params: {email}}
+    
+
+    return ( await api.get("/groups",
+        {
+            
+            headers:{
+                        Authorization: `Bearer ${token?.toString()}`
+                    },
+            params: {email}
+            
+        },
+        
     ) );
 }
 
 export  const getSummary = async() =>{
 
     const email = localStorage.getItem("email");
+    const token = localStorage.getItem("token");
+
 
     return ( await api.get("/summary",
-        {params: {email}}
+        {
+            headers:{
+                        Authorization: `Bearer ${token?.toString()}`
+                    },
+            params: {email}
+            
+        },
     ) );
 }

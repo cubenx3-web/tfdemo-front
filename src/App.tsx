@@ -44,7 +44,7 @@ function App() {
         {/* ADMIN DASHBOARD PAGE */}
         <Route path='/Admin' element ={
 
-            <div className="relative flex  w-full h-full text-lg transition-all duration-300 ease-in-out font-semibold bg-white  " >
+            <div className="relative flex  w-full h-full text-lg transition-all duration-300 ease-in-out font-semibold bg-white overflow-hidden " >
               <AdminDashPage/>
             </div>
 
@@ -55,7 +55,7 @@ function App() {
         <Route path="/Groups" element={
           
           <ProtectedRoutes>
-            <div className="relative flex  w-full h-full text-lg transition-all duration-300 ease-in-out font-semibold bg-white  ">
+            <div className="relative flex  w-full h-full text-lg transition-all duration-300 ease-in-out font-semibold bg-white overflow-hidden">
                 <GroupDashPage/>          
             </div>
           </ProtectedRoutes>

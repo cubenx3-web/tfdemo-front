@@ -4,24 +4,42 @@ import SideNav from "../components/SideNav";
 import { IoTimerOutline } from "react-icons/io5";
 import StatusCard from "../components/StatusCard";
 import { useEffect, useState } from "react";
-import { getUserSummary } from "../service/UserService/UserService.";
+import { getUserGroups, getUserSummary } from "../service/UserService/UserService.";
 import { RiKey2Line } from "react-icons/ri";
+import GroupTables from "../components/GroupTables";
 
 
 export default function GroupDashPage(){
 
 
     type SummaryType  = {
-            groups: number,
-            pending: number,
-            projects: number,
-            tasks: number,
-        }
+        groups: number,
+        pending: number,
+        projects: number,
+        tasks: number,
+    }
     
     const [summary, setSummary] = useState<SummaryType>(
             {groups:0, pending:0, projects:0, tasks:0}
         )
-       
+    
+    
+    type GroupType = {
+        groupName: string,
+        groupCode: string,
+        projects: number,
+    }
+    
+    type PendingGroupType={
+                groupName:string,
+                groupCode:string
+    }
+
+    const [groups, setGroups] = useState<GroupType[]>([])
+    const [waitingApproval, setWaitApproval] = useState<PendingGroupType[]>([])
+    const [search, setSearch] = useState<string>("")
+    
+    
     
     useEffect( ()=>{
              
@@ -30,10 +48,18 @@ export default function GroupDashPage(){
             let timeoutId = setTimeout( async()=>
             {
                 let theSummary:any = await getUserSummary();
+                let getGroups: any = await getUserGroups();
+
+
                 if(theSummary !== null){
-                        setSummary(theSummary)
-                        console.log(theSummary)
+                    setSummary(theSummary)
                 }
+
+                if(getGroups != null){
+                    setGroups(getGroups.joinedGroups)
+                    setWaitApproval(getGroups.waitingApproval)
+                }
+
             }
                 , 5000)
             
@@ -57,31 +83,40 @@ export default function GroupDashPage(){
                 
         ]
     
+    // const [groups, setGroups] = useState(null)    
+
     const headerElement = (
-        <div className="flex  place-items-center w-[45%] justify-evenly ">
+        <div className="flex  place-items-center w-[45%] max-md:w-full max-md:text-sm justify-evenly space-x-1  ">
                     <div title="Join Group" className="flex flex-1 max-w-35 justify-center place-items-center bg-blue-400 hover:bg-blue-900 p-2 rounded gap-3 cursor-pointer">
                         <RiKey2Line />
-                        Join Group
+                        Join 
                     </div>
 
                     <div title="Create Group" className="flex flex-1 max-w-35 justify-center place-items-center bg-gray-400 hover:bg-gray-700 p-2 rounded gap-3 cursor-pointer">
                         <MdOutlineGroupAdd />
-                        Create Group
+                        Create 
                     </div>
         </div>
     )    
 
+    
 
+    function searchHandler(e:React.ChangeEvent<HTMLInputElement>){
+        setSearch(e.target.value)
+
+    }
+
+    
     return (
         <>
                     <SideNav active={"Groups"}/>
                     <div className="relative flex-nowrap flex-14 space-y-2 w-full h-full place-items-center justify-center ">
                         
                         <Header heading={"Groups"} element={headerElement}/>
-                        <div className=" bg-[#e5e2e2] w-[98%] h-[90%] rounded-2xl "> 
+                        <div className=" bg-[#e5e2e2] w-[98%] h-[90%] rounded-2xl overflow-auto "> 
         
                             {/* SUMMARY */}
-                            <div  className="flex flex-wrap w-full p-3 space-x-2 space-y-2 ">
+                            <div  className="flex flex-wrap w-full p-3 gap-2 ">
         
                                 {
                                     summaryCards.map(
@@ -92,7 +127,26 @@ export default function GroupDashPage(){
                                 }
                                 
                             </div>
-        
+                                
+                            {/* JOINED GROUPS DISPLAY */}
+                            <div className="bg-white p-2 py-3 place-self-center w-[97%] rounded flex flex-col place-items-center relative">
+                                <div className="flex gap-9 w-full place-items-center px-2 mb-2">
+                                    <h1 className="font-bold  flex-2 ">Groups</h1>    
+                                    {/* Search filter */}
+                                    <div className="flex flex-1 gap-2 ">
+                                        <input type="text" 
+                                               placeholder="Search..."
+                                               onChange={searchHandler}
+                                               value = {search}
+                                               className="flex text-sm bg-[#e5e2e2] max-w-50 px-2 border-2 border-gray-300 rounded-lg h-7"
+                                        />
+                                        
+                                    </div>
+                                </div>
+
+                                <GroupTables groups={groups} waitingApproval={waitingApproval} search={search}/>
+
+                            </div>      
         
                         </div>
         

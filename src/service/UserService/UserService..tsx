@@ -1,24 +1,39 @@
-import {  getJoinedGroups, getSummary } from "../../api/UserApi/UserApi";
+import {  getGroups, getSummary } from "../../api/UserApi/UserApi";
 
 
 
 
-export async function joinedGroups(){
+export async function getUserGroups(){
     try{
         const email = localStorage.getItem("email");
         
         if(email){
-            const data =  (await getJoinedGroups()).data
+            const data =  (await getGroups()).data
 
-            const groups = data.joinedGroups;
-            const total = data.total
 
-            console.log(data)
+            type GroupType = {
+                    groupName: string,
+                    groupCode: string,
+                    projects: number,
+                }
+                    
+            type PendingGroupType={
+                groupName:string,
+                groupCode:string
+            }    
+            //const [groups, setGroups] = useState<GroupType[]>([])
+
+            const groups:GroupType[] = data.joinedGroups;
+            const waitingApproval:PendingGroupType[] = data.waitingApproval;
+
+
+            console.log("User Service Group:",groups)
+            console.log('User Service pending: ', waitingApproval)
 
             return {
-                "groups": groups,
-                "total": total
-            }
+                "joinedGroups": groups,
+                "waitingApproval":waitingApproval
+            };
         }
         else{
             window.location.href = "/login";
