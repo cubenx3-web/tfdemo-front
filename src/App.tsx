@@ -5,6 +5,7 @@ import DashBoardPage from "./pages/DashboardPage"
 import ProtectedRoutes from "./security/ProtectedRoutes"
 import AdminDashPage from "./pages/AdminDashPage"
 import GroupDashPage from "./pages/GroupDashPage"
+import PopMsg from "./components/PopMsg"
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
 
         {/* LOGIN PAGE */}
         <Route path='/login' element ={
-          <div className="relative flex w-full h-full bg-blue-300 justify-center items-center text-lg">
+          <div className="relative flex w-full h-full bg-blue-300 justify-center items-center text-lg overflow-hidden">
             <LoginPage/>          
           </div>
         }/>
@@ -34,7 +35,7 @@ function App() {
         <Route path="/Dashboard" element={
           
           <ProtectedRoutes>
-            <div className="relative flex  w-full h-full text-lg transition-all duration-300 ease-in-out font-semibold bg-white  ">
+            <div className="relative flex  w-full h-full text-lg transition-all duration-300 ease-in-out font-semibold bg-white overflow-hidden  ">
                 <DashBoardPage/>          
             </div>
           </ProtectedRoutes>
@@ -66,7 +67,7 @@ function App() {
 
       </Routes>
 
-
+      <PopMsg/>
     </>
   )
 }

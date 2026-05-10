@@ -1,10 +1,10 @@
-import { useState, type FormEvent } from "react";
+import { useContext, useState, type FormEvent } from "react";
 import React from "react";
 import { BiUser } from "react-icons/bi";
 import { MdLockOutline, MdOutlineEmail, MdPassword } from "react-icons/md";
 import { useNavigate } from "react-router";
-import PopMsg from "../components/PopMsg";
 import { signUpHandler } from "../service/SignUpHandler";
+import { PopMsgCon } from "../context/PopMsgContext";
 
 function SignUpPage(){
 
@@ -15,16 +15,14 @@ function SignUpPage(){
         password: string,
         confirmPass: string
     }
-    type MsgType = "error" | "normal" | "success"
     
     const [values, setValues] = useState<valuesType>({
         username:"", email: "", password:"", confirmPass:""
     })
 
 
-    const [msg, setMsg] = useState<string>("");
-    const [isShow, setIsShow] = useState<boolean>(false);
-    const [msgType, setMsgType] = useState<MsgType>("error");
+    
+    const popCon = useContext(PopMsgCon);
 
     function inputHandler(event: React.ChangeEvent<HTMLInputElement>){
         setValues( (prev) =>(
@@ -35,7 +33,7 @@ function SignUpPage(){
             )
         );
 
-        setIsShow(false);
+        popCon?.setUsePop( {show:false, msg:"", msgType:"normal"} );
     }
 
     async function submitHandler(e: FormEvent){
@@ -43,17 +41,11 @@ function SignUpPage(){
 
         const reg:any = (values.password === values.confirmPass && values.password.length >= 6 )? await signUpHandler({username:values.username, email:values.email, password:values.password}):null;
         
-        (values.password.length < 6)? setMsg("Use at least 6 Characters"): setMsg("Passwords do not match ")
-        
-        setMsgType("error")
-
-        if (reg!==null){
-            setMsg(reg.message)
-            setMsgType((reg.isReg)?"success": "error")    
-        }
+        (values.password.length < 6)? popCon?.setUsePop( {show:true, msg:"Use at least 6 Characters", msgType:"error"} ): 
+        (values.password!==values.confirmPass)?popCon?.setUsePop( {show:true, msg:"Passwords do not match", msgType:"error"} ):
+        (reg!==null)?popCon?.setUsePop( {show:true, msg:reg.message, msgType:((reg.isReg)?"success": "error")} ): null;
         
         
-        setIsShow(true);
         
         (reg!==null && reg.isReg )? setTimeout(()=>{navigate("/login")},2000):null;
         
@@ -124,7 +116,6 @@ function SignUpPage(){
             
                         </div>
 
-                        <PopMsg show ={isShow} msg={msg} msgType={msgType} />
         </>
     )
 }

@@ -1,9 +1,10 @@
-import React, { useState, type FormEvent } from "react";
+import React, { useContext, useState, type FormEvent } from "react";
 import { BiUser } from "react-icons/bi";
 import {MdLockOutline, MdOutlineEmail } from "react-icons/md";
 import { useNavigate } from "react-router";
-import PopMsg from "../components/PopMsg";
 import { loginHandler } from "../service/LoginHandler";
+import { PopMsgCon } from "../context/PopMsgContext";
+
 
 function LoginPage(){
 
@@ -13,13 +14,11 @@ function LoginPage(){
         password: string;
     };
 
-    type MsgType = "error" | "normal" | "success";
 
     const [values, setValues] = useState<valueTypes>({email:"", password:""})
 
-    const [msg, setMsg] = useState<string>("Missing Input !");
-    const [isShow, setIsShow] = useState<boolean>(false);
-    const [msgType, setMsgType] = useState<MsgType>("error");
+
+    const popCon = useContext(PopMsgCon);
 
 
     function inputHandler(event: React.ChangeEvent<HTMLInputElement>){
@@ -32,7 +31,7 @@ function LoginPage(){
             )
         )
 
-        setIsShow(false)
+        popCon?.setUsePop( {show:false, msg:"", msgType:"normal"} )
 
     }
 
@@ -41,12 +40,13 @@ function LoginPage(){
 
         let login = await loginHandler(values);
         
-        setMsg(login.message);
-        (login.isLogin)?setMsgType("normal") : setMsgType("error");
-        setIsShow(true);
+        (login.isLogin)?( popCon?.setUsePop( {show:true, msg:login.message, msgType:"normal"} ) ): popCon?.setUsePop( {show:true, msg:login.message, msgType:"error"} );
+
         (login.isLogin)?(setTimeout(() => {navigate("/Dashboard")},1000)):null
 
     }
+
+    
 
     return (
         <>  
@@ -98,7 +98,9 @@ function LoginPage(){
 
             </div>  
 
-            <PopMsg show={isShow} msg={msg} msgType={msgType}/>
+
+            {/* <PopMsg /> */}
+            {/* <PopMsg /> */}
             
         </>
     )

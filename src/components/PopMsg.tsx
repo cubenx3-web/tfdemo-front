@@ -1,10 +1,14 @@
 import { BiSolidError } from "react-icons/bi";
 import { SiTicktick } from "react-icons/si";
-
+import { useContext } from "react";
+import { PopMsgCon } from "../context/PopMsgContext";
+import { MdOutlineTouchApp } from "react-icons/md";
 
 type MsgType = "error" | "normal" | "success";
 
-function PopMsg({show, msg, msgType} : {show:boolean, msg:string, msgType: MsgType} ){
+export function PopMsg(){
+
+    const msg = useContext(PopMsgCon);
 
     
     const color: Record <MsgType, string> = {
@@ -19,12 +23,18 @@ function PopMsg({show, msg, msgType} : {show:boolean, msg:string, msgType: MsgTy
         success: <SiTicktick size={20}/>
     }
 
+    
+
     return (
-        <div className={`
-            absolute bottom-[10%] right-[10%] border-2 p-3 rounded-lg ${color[msgType]} ${show?"opacity-100":"hidden opacity-0"} animate-bounce duration-1000
+        <div 
+        onClick={()=>(msg?.setUsePop( {show:false, msg:msg?.usePop.msg, msgType:"normal"} ))}
+        className={`
+           cursor-pointer absolute bottom-[1%] right-[5%] border p-3 rounded-lg ${color[msg?.usePop.msgType||"normal"]} ${msg?.usePop.show?"opacity-100 translate-x-0 animate-bounce" : "opacity-50 translate-x-100 animate-spin"} duration-700
         `}>
-            <h3 className="flex gap-3 place-items-center">{icon[msgType]} {msg}</h3>
+            <h3 className="flex gap-3 place-items-center">{icon[msg?.usePop.msgType||"normal"]} {msg?.usePop.msg} <MdOutlineTouchApp size={20} /> </h3>
         </div>
     )
 }
+
+
 export default PopMsg;

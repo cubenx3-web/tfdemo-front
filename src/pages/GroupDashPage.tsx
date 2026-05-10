@@ -1,12 +1,13 @@
 import { MdOutlineGroup, MdOutlineGroupAdd } from "react-icons/md";
 import Header from "../components/Header";
 import SideNav from "../components/SideNav";
-import { IoTimerOutline } from "react-icons/io5";
+import { IoCloseCircle, IoTimerOutline } from "react-icons/io5";
 import StatusCard from "../components/StatusCard";
 import { useEffect, useState } from "react";
 import { getUserGroups, getUserSummary } from "../service/UserService/UserService.";
 import { RiKey2Line } from "react-icons/ri";
 import GroupTables from "../components/GroupTables";
+import JoinGroupForm from "../components/JoinGroupForm";
 
 
 export default function GroupDashPage(){
@@ -85,9 +86,15 @@ export default function GroupDashPage(){
     
     // const [groups, setGroups] = useState(null)    
 
+
+    const [joinState, setJoinState] = useState<boolean>(false)
+    
+
     const headerElement = (
         <div className="flex  place-items-center w-[45%] max-md:w-full max-md:text-sm justify-evenly space-x-1  ">
-                    <div title="Join Group" className="flex flex-1 max-w-35 justify-center place-items-center bg-blue-400 hover:bg-blue-900 p-2 rounded gap-3 cursor-pointer">
+                    <div
+                     onClick={()=>(setJoinState(true))}
+                     title="Join Group" className="flex flex-1 max-w-35 justify-center place-items-center bg-blue-400 hover:bg-blue-900 p-2 rounded gap-3 cursor-pointer">
                         <RiKey2Line />
                         Join 
                     </div>
@@ -110,7 +117,7 @@ export default function GroupDashPage(){
     return (
         <>
                     <SideNav active={"Groups"}/>
-                    <div className="relative flex-nowrap flex-14 space-y-2 w-full h-full place-items-center justify-center ">
+                    <div className="relative flex-nowrap flex-14 space-y-2 w-full h-full place-items-center justify-center overflow-hidden">
                         
                         <Header heading={"Groups"} element={headerElement}/>
                         <div className=" bg-[#e5e2e2] w-[98%] h-[90%] rounded-2xl overflow-auto "> 
@@ -149,11 +156,13 @@ export default function GroupDashPage(){
                             </div>      
         
                         </div>
-        
+         
                     </div>
-        
-                    
-                    
+                    <JoinGroupForm joinState={joinState} 
+                    closeIcon={
+                        <IoCloseCircle size={30} onClick={()=>(setJoinState(false))} 
+                             className="cursor-pointer hover:text-red-500 active:text-red-900 absolute top-2 right-5" />
+                        }/>
                 </>
     );  
 
