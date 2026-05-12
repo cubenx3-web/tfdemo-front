@@ -51,7 +51,7 @@ function LoginPage(){
     return (
         <>  
             {/* login page container */}
-            <div className="flex-col relative space-y-5 bg-white px-6 py-10  justify-center place-items-center rounded-xl">
+            <div className="flex-col relative space-y-5 max-sm:w-[90%] bg-white px-6 py-10  justify-center place-items-center rounded-xl">
 
                 <div className="bg-white border-b-4 border-t-2 border-t-white p-3 rounded-full absolute -top-10 text-blue-700">
                     <BiUser size={70}/>

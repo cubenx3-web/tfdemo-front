@@ -24,7 +24,7 @@ function App() {
 
         {/* REGISTRATION PAGE */}
         <Route path='/sign-up' element ={
-          <div className="relative flex w-full h-full bg-blue-300 justify-center items-center text-lg">
+          <div className="relative flex w-screen h-screen bg-blue-300 justify-center items-center text-lg overflow-hidden">
             <SignUpPage/>          
           </div>
         }/>
