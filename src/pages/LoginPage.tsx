@@ -82,12 +82,12 @@ function LoginPage(){
                     <div className="flex flex-col w-full space-y-1 justify-center">
                         <button
                         type="submit"
-                        className="bg-blue-500 hover:bg-blue-700 active:bg-gray-500 text-white p-1 rounded-lg  font-semibold text-lg" >Login</button>
+                        className="bg-blue-500 hover:bg-blue-700 active:bg-gray-500 text-white p-1 rounded-lg font-semibold " >Login</button>
                         
                         <h1 className="flex justify-center ">New here?</h1>
 
                         <button className="bg-blue-500
-                        hover:bg-blue-700 active:bg-gray-500 text-white p-1 rounded-lg  font-semibold text-lg" 
+                        hover:bg-blue-700 active:bg-gray-500 text-white p-1 rounded-lg  font-semibold " 
                         onClick={()=>(navigate("/sign-up"))}
                         >Create an Account</button>
                         
