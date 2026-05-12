@@ -51,7 +51,7 @@ function LoginPage(){
     return (
         <>  
             {/* login page container */}
-            <div className="flex-col relative space-y-5 max-sm:w-[90%] bg-white px-6 py-10  justify-center place-items-center rounded-xl">
+            <div className="flex-col relative space-y-5  bg-white  py-10  justify-center place-items-center rounded-xl">
 
                 <div className="bg-white border-b-4 border-t-2 border-t-white p-3 rounded-full absolute -top-10 text-blue-700">
                     <BiUser size={70}/>
@@ -60,7 +60,7 @@ function LoginPage(){
                 <h2 className=" font-semibold text-2xl text-blue-600 text-center mt-10">Login</h2>
 
                 {/* Input */}
-                <form onSubmit={submitHandler} className="flex-col justify-center place-items-center space-y-7">
+                <form onSubmit={submitHandler} className="flex-col justify-center p-3 place-items-center space-y-7">
 
                     <div className="flex-col w-full justify-center place-items-center space-y-3">
                         <div className="flex w-full justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-2">
