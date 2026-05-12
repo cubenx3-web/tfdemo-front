@@ -1,9 +1,9 @@
 import { MdOutlineGroup, MdOutlineGroupAdd } from "react-icons/md";
 import Header from "../components/Header";
 import SideNav from "../components/SideNav";
-import { IoCloseCircle, IoTimerOutline } from "react-icons/io5";
+import { IoTimerOutline } from "react-icons/io5";
 import StatusCard from "../components/StatusCard";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { getUserGroups, getUserSummary } from "../service/UserService/UserService.";
 import { RiKey2Line } from "react-icons/ri";
 import GroupTables from "../components/GroupTables";
