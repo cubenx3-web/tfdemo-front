@@ -63,14 +63,14 @@ function LoginPage(){
                 <form onSubmit={submitHandler} className="flex-col justify-center place-items-center space-y-7">
 
                     <div className="flex-col w-full justify-center place-items-center space-y-3">
-                        <div className="flex w-full justify-center place-items-center space-x-2 border border-gray-300 rounded-2xl px-2">
+                        <div className="flex w-full justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-2">
                             <label className="font-medium text-lg flex place-items-center p-1 border-r border-gray-300" htmlFor="email">
                                 <MdOutlineEmail size={20}/>
                             </label>
                             <input id="email" onChange={(inputHandler)} name="email"  value={values.email} className=" h-10 p-2 rounded flex-1 outline-blue-300" type="text" placeholder="Enter your email" required />
                         </div>
 
-                        <div className="flex w-full justify-center place-items-center space-x-2 border border-gray-300 rounded-2xl px-2">
+                        <div className="flex w-full justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-2">
                             <label className="font-medium text-lg flex place-items-center p-1 border-r border-gray-300" htmlFor="password">
                                 <MdLockOutline size={20}/>
                             </label>
@@ -79,15 +79,15 @@ function LoginPage(){
                     </div>
                     
                     
-                    <div className="flex-col w-full space-y-2 justify-center">
+                    <div className="flex-col w-full space-y-1.5 justify-center">
                         <button
                         type="submit"
-                        className="bg-blue-500 hover:bg-blue-700 active:bg-gray-500 text-white p-1.5 rounded-4xl w-full font-semibold text-lg" >Login</button>
+                        className="bg-blue-500 hover:bg-blue-700 active:bg-gray-500 text-white p-1.5 rounded-lg w-full font-semibold text-lg" >Login</button>
                         <br />
-                        <h1 className="w-full flex justify-center ">New here?</h1>
+                        <h1 className="flex justify-center ">New here?</h1>
 
                         <button className="bg-blue-500
-                        hover:bg-blue-700 active:bg-gray-500 text-white p-1.5 rounded-4xl w-full font-semibold text-lg" 
+                        hover:bg-blue-700 active:bg-gray-500 text-white p-1.5 rounded-lg w-full font-semibold text-lg" 
                         onClick={()=>(navigate("/sign-up"))}
                         >Create an Account</button>
                         
@@ -97,10 +97,6 @@ function LoginPage(){
                 </form>                
 
             </div>  
-
-
-            {/* <PopMsg /> */}
-            {/* <PopMsg /> */}
             
         </>
     )

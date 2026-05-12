@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { BiLogOut, BiMessage, BiTask } from "react-icons/bi";
 import { CgArrowLeft } from "react-icons/cg";
-import { MdDashboard, MdGroup } from "react-icons/md";
+import { MdAdminPanelSettings, MdDashboard, MdGroup } from "react-icons/md";
 import { Link } from "react-router-dom";
 import logo from"../../images/logo1.png" 
 import { GiHamburgerMenu } from "react-icons/gi";
 import { logout } from "../service/LogoutHandler";
+import { isAdmin } from "../hooks/AboutUser";
+import { HiFolderOpen, HiUserGroup } from "react-icons/hi2";
 
 type Props = {
     active: string
@@ -37,8 +39,22 @@ export default function SideNav(active: Props){
         )
     }
 
+    const admin = isAdmin();
+    
 
     const navs = [
+        {
+            nav: (admin)?"Admin":null,
+            icon:<MdAdminPanelSettings size={20}/>
+        },
+        {
+            nav: (admin)?"Projects":null,
+            icon: <HiFolderOpen size={20}/>
+        },
+        {
+            nav: (admin)?"Manage Groups":null,
+            icon: <HiUserGroup size={20}/>
+        },
         {
             nav: "Dashboard",
             icon: <MdDashboard size={20}/>
@@ -54,7 +70,8 @@ export default function SideNav(active: Props){
         {
             nav:"Messages",
             icon:<BiMessage size={20}/>
-        }
+        },
+        
     ]
 
 
@@ -69,7 +86,7 @@ export default function SideNav(active: Props){
             <CgArrowLeft size={25} 
                 onClick={handleSlide}
                 className={`
-                absolute  text-white bg-blue-500 p-1 rounded-lg -right-2 top-20 transition-all duration-400 ease-in border hover:bg-blue-950
+                absolute  text-white bg-blue-500 p-1 rounded-lg -right-2 top-22 transition-all duration-400 ease-in border hover:bg-blue-950
                 ${sliderStyle[slideState].sliderIcon} 
                 `}
             /> 
@@ -89,12 +106,16 @@ export default function SideNav(active: Props){
             
             {/* NAV LINKS */}
             <div 
-            className="absolute w-[90%] space-y-1 -translate-x-1/2 left-1/2 top-1/4 flex-col place-items-center p-1 justify-center text-lg"
+            className="absolute w-[90%] space-y-1 -translate-x-1/2 left-1/2 top-1/5 flex-col place-items-center p-1 justify-center text-lg"
             >
+
+                    
+
                 {
                     navs.map( (nav, key) =>
                     (
-                        <Link to={"/"+nav.nav} key={key}
+                       (nav.nav!==null)? 
+                        <Link to={"/"+nav.nav.replace(" ","-")} key={key}
                                 className={`flex gap-2  p-2 w-[101%] font-semibold text-white  hover:bg-linear-to-br hover:from-blue-400 hover:to-blue-600/40  rounded-lg text-[15px] text-center items-center
                                 ${(slideState ==="closed")?"justify-center":""}    
                                 ${(nav.nav===active.active)?"bg-linear-to-tr from-cyan-600/60  to-green-600/40  rounded-lg ":""}`  }
@@ -103,7 +124,7 @@ export default function SideNav(active: Props){
                         
                             <div className={` `+sliderStyle[slideState].navText}>{nav.nav}</div>  
                         
-                        </Link>
+                        </Link>:null
                     )
                     )
                 }

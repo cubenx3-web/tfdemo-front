@@ -6,6 +6,7 @@ import ProtectedRoutes from "./security/ProtectedRoutes"
 import AdminDashPage from "./pages/AdminDashPage"
 import GroupDashPage from "./pages/GroupDashPage"
 import PopMsg from "./components/PopMsg"
+import AdminRoutes from "./security/AdminRoutes"
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
 
         {/* LOGIN PAGE */}
         <Route path='/login' element ={
-          <div className="relative flex w-full h-full bg-blue-300 justify-center items-center text-lg overflow-hidden">
+          <div className="relative flex w-screen h-screen bg-blue-300 justify-center items-center text-lg overflow-hidden">
             <LoginPage/>          
           </div>
         }/>
@@ -44,11 +45,13 @@ function App() {
 
         {/* ADMIN DASHBOARD PAGE */}
         <Route path='/Admin' element ={
-
-            <div className="relative flex  w-full h-full text-lg transition-all duration-300 ease-in-out font-semibold bg-white overflow-hidden " >
-              <AdminDashPage/>
-            </div>
-
+          <ProtectedRoutes>
+            <AdminRoutes>
+              <div className="relative flex  w-full h-full text-lg transition-all duration-300 ease-in-out font-semibold bg-white overflow-hidden " >
+                <AdminDashPage/>
+              </div>
+            </AdminRoutes>
+          </ProtectedRoutes>
         }/>
 
 

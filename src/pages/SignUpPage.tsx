@@ -69,28 +69,28 @@ function SignUpPage(){
                             className="flex-col justify-center place-items-center space-y-7">
             
                                 <div className="flex-col w-full justify-center place-items-center space-y-3">
-                                    <div className="flex w-full justify-center place-items-center space-x-2 border border-gray-300 rounded-2xl px-2">
+                                    <div className="flex w-full justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-2">
                                         <label className="font-medium text-lg flex place-items-center p-1 border-r border-gray-300" htmlFor="text">
                                             <BiUser size={20}/>
                                         </label>
                                         <input id="text" name="username" onChange={inputHandler} value={values.username} className=" h-10 p-2 rounded flex-1 outline-blue-300" type="text" placeholder="Enter your username" required />
                                     </div>
 
-                                    <div className="flex w-full justify-center place-items-center space-x-2 border border-gray-300 rounded-2xl px-2">
+                                    <div className="flex w-full justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-2">
                                         <label className="font-medium text-lg flex place-items-center p-1 border-r border-gray-300" htmlFor="email">
                                             <MdOutlineEmail size={20}/>
                                         </label>
                                         <input id="email" name="email" onChange={inputHandler} value={values.email} className=" h-10 p-2 rounded flex-1 outline-blue-300" type="text" placeholder="Enter your email" required />
                                     </div>
             
-                                    <div className="flex w-full justify-center place-items-center space-x-2 border border-gray-300 rounded-2xl px-2">
+                                    <div className="flex w-full justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-2">
                                         <label className="font-medium text-lg flex place-items-center p-1 border-r border-gray-300" htmlFor="password">
                                             <MdLockOutline size={20}/>
                                         </label>
                                         <input id="password" name="password" onChange={inputHandler} value={values.password} className= " h-10 p-2 rounded flex-1 outline-blue-300" type="password" placeholder="Enter your password"/>
                                     </div>
 
-                                    <div className="flex w-full justify-center place-items-center space-x-2 border border-gray-300 rounded-2xl px-2">
+                                    <div className="flex w-full justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-2">
                                         <label className="font-medium text-lg flex place-items-center p-1 border-r border-gray-300" htmlFor="confirm-pass">
                                             <MdPassword size={20}/>
                                         </label>
@@ -100,12 +100,12 @@ function SignUpPage(){
                                 
                                 
                                 <div className="flex-col w-full space-y-2 justify-center">
-                                    <button className="bg-blue-500 hover:bg-blue-700 active:bg-gray-500 text-white p-1.5 rounded-4xl w-full font-semibold text-lg" >Sign Up</button>
+                                    <button className="bg-blue-500 hover:bg-blue-700 active:bg-gray-500 text-white p-1.5 rounded-lg w-full font-semibold text-lg" >Sign Up</button>
                                     <br />
-                                    <h1 className="w-full flex justify-center ">or</h1>
+                                    <h1 className="flex justify-center ">or</h1>
             
                                     <button className="bg-blue-500
-                                    hover:bg-blue-700 active:bg-gray-500 text-white p-1.5 rounded-4xl w-full font-semibold text-lg" 
+                                    hover:bg-blue-700 active:bg-gray-500 text-white p-1.5 rounded-lg w-full font-semibold text-lg" 
                                     onClick={()=>(navigate("/login"))}
                                     >I Have an Account</button>
                                     

@@ -1,15 +1,18 @@
 import { useContext, useState, type FormEvent } from "react"
 import { PopMsgCon } from "../context/PopMsgContext"
 import { joinGroup } from "../service/GroupService/GroupService";
+import { JoinStateContext } from "../pages/GroupDashPage";
+import { IoCloseCircle } from "react-icons/io5";
 
 
-export default function JoinGroupForm({joinState, closeIcon}:{joinState:boolean, closeIcon:any}){
+export default function JoinGroupForm(){
 
-    
+    const j = useContext(JoinStateContext);
     
     const msg = useContext(PopMsgCon);
 
-    const [groupCode, setGroupCode] = useState<string>("")
+    const [groupCode, setGroupCode] = useState<string>("");
+    
 
     async function submitHander(e:FormEvent){
         e.preventDefault();
@@ -20,14 +23,10 @@ export default function JoinGroupForm({joinState, closeIcon}:{joinState:boolean,
 
         // Submit request to join Group
         type MsgType = "error"|"success"|"normal";
-
-        
             
-        msg?.setUsePop( {show:true, msg:join?.msg, msgType:join?.msgType as MsgType} )
+        msg?.setUsePop( {show:true, msg:join?.msg, msgType:join?.msgType as MsgType} );
 
-        
-        
-        
+        (join?.isSent) ? j?.setJoinState(false):null;
 
     }
 
@@ -35,11 +34,10 @@ export default function JoinGroupForm({joinState, closeIcon}:{joinState:boolean,
 
     return (
 
-
-
-        <div className={`absolute flex place-items-center justify-center bg-blue-500/20 left-1/2 min-w-[70%] min-h-[40%] p-4  transition-all rounded-lg  backdrop-blur-sm duration-600 z-1  place-self-center -translate-y-1/2 top-1/2 ${(joinState)?"-translate-x-1/2":"translate-x-full"}`}>
+        <div className={`absolute flex place-items-center justify-center bg-blue-500/20 left-1/2 min-w-[70%] min-h-[40%] p-4  transition-all rounded-lg  backdrop-blur-sm duration-600 z-1  place-self-center -translate-y-1/2 top-1/2 ${(j?.joinState)?"-translate-x-1/2":"translate-x-full"}`}>
             
-            {closeIcon}
+            <IoCloseCircle size={30} onClick={()=>(j?.setJoinState(false), setGroupCode(""))} 
+                           className="cursor-pointer hover:text-red-500 active:text-red-900 absolute top-2 right-5" />
 
             
 

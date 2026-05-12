@@ -3,12 +3,18 @@ import Header from "../components/Header";
 import SideNav from "../components/SideNav";
 import { IoCloseCircle, IoTimerOutline } from "react-icons/io5";
 import StatusCard from "../components/StatusCard";
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { getUserGroups, getUserSummary } from "../service/UserService/UserService.";
 import { RiKey2Line } from "react-icons/ri";
 import GroupTables from "../components/GroupTables";
 import JoinGroupForm from "../components/JoinGroupForm";
 
+
+type JoinStateType = {
+    joinState : boolean;
+    setJoinState: React.Dispatch<React.SetStateAction<boolean>>;
+}
+export const JoinStateContext = createContext<JoinStateType|null>(null);
 
 export default function GroupDashPage(){
 
@@ -120,6 +126,7 @@ export default function GroupDashPage(){
                     <div className="relative flex-nowrap flex-14 space-y-2 w-full h-full place-items-center justify-center overflow-hidden">
                         
                         <Header heading={"Groups"} element={headerElement}/>
+                        
                         <div className=" bg-[#e5e2e2] w-[98%] h-[90%] rounded-2xl overflow-auto "> 
         
                             {/* SUMMARY */}
@@ -158,11 +165,11 @@ export default function GroupDashPage(){
                         </div>
          
                     </div>
-                    <JoinGroupForm joinState={joinState} 
-                    closeIcon={
-                        <IoCloseCircle size={30} onClick={()=>(setJoinState(false))} 
-                             className="cursor-pointer hover:text-red-500 active:text-red-900 absolute top-2 right-5" />
-                        }/>
+
+                    <JoinStateContext.Provider value={{joinState, setJoinState}}>
+                        <JoinGroupForm />
+                    </JoinStateContext.Provider>
+
                 </>
     );  
 
