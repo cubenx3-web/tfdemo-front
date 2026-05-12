@@ -91,10 +91,10 @@ export default function SideNav(active: Props){
                 `}
             /> 
 
-            <GiHamburgerMenu size ={35}
+            <GiHamburgerMenu size ={25}
                     onClick={handleSlide}
                     className={`
-                    absolute  text-black bg-blue-500 p-1 rounded-lg right-[-99%] top-2  transition-all duration-400 ease-in hover:bg-blue-950
+                    absolute  text-white bg-blue-500 p-1 rounded-lg right-[-90%] top-[2%]  transition-all duration-400 ease-in hover:bg-blue-950
                     ${sliderStyle[slideState].sliderIcon2} 
                 `}
             />
