@@ -1,6 +1,6 @@
 import { loginUser } from "../api/Auth";
 import { jwtDecode } from "jwt-decode";
-
+import { isAdmin } from "../store/Store";
 
 type tokenType = {
     admin : boolean,
@@ -10,7 +10,11 @@ type tokenType = {
     username: String
 }
 
+
+
 export const loginHandler = async (data: {email: string, password: string}) =>{ 
+    
+
     try{
         const response = await loginUser(data)
         
@@ -20,10 +24,12 @@ export const loginHandler = async (data: {email: string, password: string}) =>{
         const decode = jwtDecode<tokenType>(response.data.token)
         localStorage.setItem("username", decode.username.toString())
 
-        const isAdmin:boolean = decode.admin
         
+        const isAdminState:boolean = decode.admin
         
-        localStorage.setItem("isAdmin", JSON.stringify(isAdmin))
+        isAdmin.getState().setIsAdmin(isAdminState);
+
+        localStorage.setItem("isAdmin", JSON.stringify(isAdminState))
         localStorage.setItem("email", decode.sub.toString())
 
         return {

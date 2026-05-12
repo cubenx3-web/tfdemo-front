@@ -1,10 +1,10 @@
-import { useContext, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import React from "react";
 import { BiUser } from "react-icons/bi";
 import { MdLockOutline, MdOutlineEmail, MdPassword } from "react-icons/md";
 import { useNavigate } from "react-router";
 import { signUpHandler } from "../service/SignUpHandler";
-import { PopMsgCon } from "../context/PopMsgContext";
+import { slideMsg } from "../store/ComponentState";
 
 function SignUpPage(){
 
@@ -21,8 +21,8 @@ function SignUpPage(){
     })
 
 
-    
-    const popCon = useContext(PopMsgCon);
+
+    const {setSlideMsg} = slideMsg();
 
     function inputHandler(event: React.ChangeEvent<HTMLInputElement>){
         setValues( (prev) =>(
@@ -33,7 +33,7 @@ function SignUpPage(){
             )
         );
 
-        popCon?.setUsePop( {show:false, msg:"", msgType:"normal"} );
+       setSlideMsg( {show:false, msg:"", msgType:"normal"} );
     }
 
     async function submitHandler(e: FormEvent){
@@ -41,9 +41,9 @@ function SignUpPage(){
 
         const reg:any = (values.password === values.confirmPass && values.password.length >= 6 )? await signUpHandler({username:values.username, email:values.email, password:values.password}):null;
         
-        (values.password.length < 6)? popCon?.setUsePop( {show:true, msg:"Use at least 6 Characters", msgType:"error"} ): 
-        (values.password!==values.confirmPass)?popCon?.setUsePop( {show:true, msg:"Passwords do not match", msgType:"error"} ):
-        (reg!==null)?popCon?.setUsePop( {show:true, msg:reg.message, msgType:((reg.isReg)?"success": "error")} ): null;
+        (values.password.length < 6)? setSlideMsg( {show:true, msg:"Use at least 6 Characters", msgType:"error"} ): 
+        (values.password!==values.confirmPass)? setSlideMsg( {show:true, msg:"Passwords do not match", msgType:"error"} ):
+        (reg!==null)? setSlideMsg( {show:true, msg:reg.message, msgType:((reg.isReg)?"success": "error")} ): null;
         
         
         
@@ -100,11 +100,11 @@ function SignUpPage(){
                                 
                                 
                                 <div className="flex flex-col w-full space-y-1 justify-center">
-                                    <button className="bg-blue-500 hover:bg-blue-700 active:bg-gray-500 text-white p-2 rounded-lg  font-semibold" >Sign Up</button>
+                                    <button type="submit" className="bg-blue-500 hover:bg-blue-700 active:bg-gray-500 text-white p-2 rounded-lg  font-semibold" >Sign Up</button>
                                     
                                     <h1 className="flex justify-center ">or</h1>
             
-                                    <button className="bg-blue-500
+                                    <button type="button" className="bg-blue-500
                                     hover:bg-blue-700 active:bg-gray-500 text-white p-2 rounded-lg  font-semibold " 
                                     onClick={()=>(navigate("/login"))}
                                     >I Have an Account</button>

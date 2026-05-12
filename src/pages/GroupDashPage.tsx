@@ -3,18 +3,27 @@ import Header from "../components/Header";
 import SideNav from "../components/SideNav";
 import { IoTimerOutline } from "react-icons/io5";
 import StatusCard from "../components/StatusCard";
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { getUserGroups, getUserSummary } from "../service/UserService/UserService.";
 import { RiKey2Line } from "react-icons/ri";
 import GroupTables from "../components/GroupTables";
 import JoinGroupForm from "../components/JoinGroupForm";
+import CreateGroupFrom from "../components/CreateGroupFrom";
 
 
 type JoinStateType = {
     joinState : boolean;
     setJoinState: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+type CreateGroupType = {
+    createGroupState : boolean;
+    setCreateGroupState: React.Dispatch<React.SetStateAction<boolean>>;
+
+}
+
 export const JoinStateContext = createContext<JoinStateType|null>(null);
+export const CreateGroupContext = createContext<CreateGroupType|null>(null);
 
 export default function GroupDashPage(){
 
@@ -93,7 +102,8 @@ export default function GroupDashPage(){
     // const [groups, setGroups] = useState(null)    
 
 
-    const [joinState, setJoinState] = useState<boolean>(false)
+    const [joinState, setJoinState] = useState<boolean>(false);
+    const [createGroupState, setCreateGroupState] = useState<boolean>(false);
     
 
     const headerElement = (
@@ -105,7 +115,9 @@ export default function GroupDashPage(){
                         Join 
                     </div>
 
-                    <div title="Create Group" className="flex flex-1 max-w-35 justify-center place-items-center bg-gray-400 hover:bg-gray-700 p-2 rounded gap-3 cursor-pointer">
+                    <div
+                        onClick={()=>(setCreateGroupState(true))} 
+                        title="Create Group" className="flex flex-1 max-w-35 justify-center place-items-center bg-gray-400 hover:bg-gray-700 p-2 rounded gap-3 cursor-pointer">
                         <MdOutlineGroupAdd />
                         Create 
                     </div>
@@ -170,7 +182,12 @@ export default function GroupDashPage(){
                         <JoinGroupForm />
                     </JoinStateContext.Provider>
 
-                </>
+                    <CreateGroupContext.Provider value={{createGroupState, setCreateGroupState}}>
+                        <CreateGroupFrom/>
+                    </CreateGroupContext.Provider>
+
+                    
+        </>
     );  
 
 }

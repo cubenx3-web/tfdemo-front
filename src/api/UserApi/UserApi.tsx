@@ -41,7 +41,6 @@ export  const getSummary = async() =>{
                         Authorization: `Bearer ${token?.toString()}`
                     },
             params: {email}
-            
         },
     ) );
 }

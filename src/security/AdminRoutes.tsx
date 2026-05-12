@@ -1,10 +1,13 @@
+import { isAdmin } from "../store/Store";
 
 function AdminRoutes({children}:any){
 
-    const isAdmin: boolean = JSON.parse(localStorage.getItem("isAdmin") || "false");
+    const {admin} = isAdmin();
+
+    
 
     console.log("isAdmin:", isAdmin)
-    if(isAdmin){
+    if(admin){
         return children
     }
     else{

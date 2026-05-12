@@ -6,29 +6,29 @@ import { Link } from "react-router-dom";
 import logo from"../../images/logo1.png" 
 import { GiHamburgerMenu } from "react-icons/gi";
 import { logout } from "../service/LogoutHandler";
-import { isAdmin } from "../hooks/AboutUser";
 import { HiFolderOpen, HiUserGroup } from "react-icons/hi2";
+import { isAdmin } from "../store/Store";
 
 type Props = {
     active: string
 }
 export default function SideNav(active: Props){
 
-    const [slideState, setSlideState] = useState <string>("closed");
+    const [slideState, setSlideState] = useState <string>("open");
     
-    
+    const {admin} = isAdmin();
 
     const sliderStyle: Record<string, {sliderIcon: string, sliderNav: string, navText: string, sliderIcon2:string}> = {
         "open": { 
             sliderIcon: "rotate-0",
-            sliderNav:"md:flex-3 w-[70%] max-sm:left-[5%] max-sm:w-[80%]",
+            sliderNav: " w-50 max-md:w-60",
             navText:"",
             sliderIcon2:"opacity-0"
         },
         "closed": {
-            sliderIcon:"rotate-180 max-sm:hidden",
-            sliderNav:"md:flex-1 w-[20%] max-sm:-left-[30%] " ,
-            navText:"opacity-0 hidden",
+            sliderIcon:" rotate-180 max-sm:hidden",
+            sliderNav:" w-20 max-sm:-translate-x-3/2 " ,
+            navText:"opacity-0  hidden",
             sliderIcon2:"sm:hidden"
         },
     }
@@ -39,7 +39,6 @@ export default function SideNav(active: Props){
         )
     }
 
-    const admin = isAdmin();
     
 
     const navs = [
@@ -79,11 +78,11 @@ export default function SideNav(active: Props){
 
     return (
         <div className={` 
-        sm:relative sm:flex bg-blue-500/70 backdrop-blur-2xl h-[98%] transition-all duration-500 ease-in p-2  rounded-xl my-1 ml-2 justify-center text-center 
+        sm:relative  bg-blue-500/70 backdrop-blur-2xl h-[98%] transition-all duration-500 ease-in p-2 px-3 rounded-lg my-1 ml-2 justify-center text-center 
         ${sliderStyle[slideState].sliderNav}
-        max-sm:absolute z-1 max-sm:duration-500 
+        max-sm:absolute z-1  
         `}>
-            <CgArrowLeft size={25} 
+            <CgArrowLeft size={22} 
                 onClick={handleSlide}
                 className={`
                 absolute  text-white bg-blue-500 p-1 rounded-lg -right-2 top-22 transition-all duration-400 ease-in border hover:bg-blue-950
@@ -100,13 +99,13 @@ export default function SideNav(active: Props){
             />
 
 
-            <div className="flex-col place-items-center space-y-10">
+            <div className="place-self-center">
                 <img src={logo} alt="Logo" className="w-15 h-15 rounded-full"/>
             </div>
             
             {/* NAV LINKS */}
             <div 
-            className="absolute w-[90%] space-y-1 -translate-x-1/2 left-1/2 top-1/5 flex-col place-items-center p-1 justify-center text-lg"
+            className="  translate-y-2/9 origin-top flex flex-col  p-1 text-lg "
             >
 
                     
@@ -116,7 +115,7 @@ export default function SideNav(active: Props){
                     (
                        (nav.nav!==null)? 
                         <Link to={"/"+nav.nav.replace(" ","-")} key={key}
-                                className={`flex gap-2  p-2 w-[101%] font-semibold text-white  hover:bg-linear-to-br hover:from-blue-400 hover:to-blue-600/40  rounded-lg text-[15px] text-center items-center
+                                className={`flex gap-2  p-2 font-semibold text-white  hover:bg-linear-to-br hover:from-blue-400 hover:to-blue-600/40  rounded-lg text-[15px] text-center items-center
                                 ${(slideState ==="closed")?"justify-center":""}    
                                 ${(nav.nav===active.active)?"bg-linear-to-tr from-cyan-600/60  to-green-600/40  rounded-lg ":""}`  }
                             > 

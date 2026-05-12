@@ -1,15 +1,15 @@
 import { useContext, useState, type FormEvent } from "react"
-import { PopMsgCon } from "../context/PopMsgContext"
 import { joinGroup } from "../service/GroupService/GroupService";
 import { JoinStateContext } from "../pages/GroupDashPage";
 import { IoCloseCircle } from "react-icons/io5";
+import { slideMsg } from "../store/ComponentState";
 
 
 export default function JoinGroupForm(){
 
     const j = useContext(JoinStateContext);
     
-    const msg = useContext(PopMsgCon);
+    
 
     const [groupCode, setGroupCode] = useState<string>("");
     
@@ -17,16 +17,17 @@ export default function JoinGroupForm(){
     async function submitHander(e:FormEvent){
         e.preventDefault();
 
-        (groupCode.trim() === "")?msg?.setUsePop( {show:true, msg:"Enter Group Code", msgType:"error"} ) :null;
+        const {setSlideMsg} = slideMsg();
+        (groupCode.trim() === "")? setSlideMsg( {show:true, msg:"Enter Group Code", msgType:"error"} ) :null;
 
         let join = await joinGroup(groupCode)
 
         // Submit request to join Group
         type MsgType = "error"|"success"|"normal";
             
-        msg?.setUsePop( {show:true, msg:join?.msg, msgType:join?.msgType as MsgType} );
+        setSlideMsg( {show:true, msg:join?.msg, msgType:join?.msgType as MsgType} );
 
-        (join?.isSent) ? j?.setJoinState(false):null;
+        (join?.isSent) ? setSlideMsg:null;
 
     }
 

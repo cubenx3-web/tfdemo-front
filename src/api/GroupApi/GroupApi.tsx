@@ -30,3 +30,24 @@ export async function userJoinGroup(groupCode:string){
    
 
 }
+
+export async function createGroupApi(groupName:string){
+
+    const email = localStorage.getItem("email")
+    const token = localStorage.getItem("token")
+
+    return ( await api.post("/create",
+        {
+            "email":email,
+            "groupName":groupName
+        },
+        {
+            headers:{
+                        Authorization: `Bearer ${token?.toString()}`
+                    }
+        }
+    )
+        
+    )
+
+}

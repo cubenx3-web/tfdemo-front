@@ -1,9 +1,9 @@
-import React, { useContext, useState, type FormEvent } from "react";
+import React, { useState, type FormEvent } from "react";
 import { BiUser } from "react-icons/bi";
 import {MdLockOutline, MdOutlineEmail } from "react-icons/md";
 import { useNavigate } from "react-router";
 import { loginHandler } from "../service/LoginHandler";
-import { PopMsgCon } from "../context/PopMsgContext";
+import { slideMsg } from "../store/ComponentState";
 
 
 function LoginPage(){
@@ -18,7 +18,8 @@ function LoginPage(){
     const [values, setValues] = useState<valueTypes>({email:"", password:""})
 
 
-    const popCon = useContext(PopMsgCon);
+    //const popCon = useContext(PopMsgCon);
+    const {setSlideMsg} = slideMsg();
 
 
     function inputHandler(event: React.ChangeEvent<HTMLInputElement>){
@@ -31,7 +32,7 @@ function LoginPage(){
             )
         )
 
-        popCon?.setUsePop( {show:false, msg:"", msgType:"normal"} )
+        setSlideMsg( {show:false, msg:"", msgType:"normal"} )
 
     }
 
@@ -40,12 +41,12 @@ function LoginPage(){
 
         let login = await loginHandler(values);
         
-        (login.isLogin)?( popCon?.setUsePop( {
+        (login.isLogin)?( setSlideMsg( {
             show:true, 
             msg:login.message, 
             msgType:"normal"
         }))
-        :popCon?.setUsePop( {
+        :setSlideMsg( {
             show:true, 
             msg:login.message, 
             msgType:"error"
@@ -95,7 +96,9 @@ function LoginPage(){
                         
                         <h1 className="flex justify-center ">New here?</h1>
 
-                        <button className="bg-blue-500
+                        <button 
+                        type="button"
+                        className="bg-blue-500
                         hover:bg-blue-700 active:bg-gray-500 text-white p-2 rounded-lg  font-semibold " 
                         onClick={()=>(navigate("/sign-up"))}
                         >Create an Account</button>

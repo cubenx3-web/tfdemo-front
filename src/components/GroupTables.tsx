@@ -97,7 +97,7 @@ export default function GroupTables({groups, waitingApproval, search}:{groups:Gr
                                             <td className="">
                                                 <button 
                                                     className="bg-red-500 hover:bg-amber-800 active:bg-red-500  p-1 text-white w-10/12 rounded-2xl max-sm:text-xs">
-                                                        Leave 
+                                                        Cancel 
                                                 </button>
                                             </td>
                                         </tr>
