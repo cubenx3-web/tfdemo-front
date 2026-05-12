@@ -51,7 +51,7 @@ function LoginPage(){
     return (
         <>  
             {/* login page container */}
-            <div className="flex-col relative space-y-5  bg-white px-3 py-10  justify-center place-items-center rounded-xl">
+            <div className="flex-col relative space-y-5  bg-white p-3 pb-5 pt-10  justify-center place-items-center rounded-xl">
 
                 <div className="bg-white border-b-4 border-t-2 border-t-white p-3 rounded-full absolute -top-10 text-blue-700">
                     <BiUser size={70}/>
@@ -60,7 +60,7 @@ function LoginPage(){
                 <h2 className=" font-semibold text-2xl text-blue-600 text-center mt-10">Login</h2>
 
                 {/* Input */}
-                <form onSubmit={submitHandler} className="flex flex-col justify-center p-1 max-sm:text-sm place-items-center space-y-7">
+                <form onSubmit={submitHandler} className="flex flex-col justify-center p-1 text-sm place-items-center space-y-5">
 
                     <div className="flex flex-col justify-center place-items-center space-y-3">
                         <div className="flex justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-1">
@@ -82,12 +82,12 @@ function LoginPage(){
                     <div className="flex flex-col w-full space-y-1 justify-center">
                         <button
                         type="submit"
-                        className="bg-blue-500 hover:bg-blue-700 active:bg-gray-500 text-white p-1 rounded-lg font-semibold " >Login</button>
+                        className="bg-blue-500 hover:bg-blue-700 active:bg-gray-500 text-white p-2 rounded-lg font-semibold " >Login</button>
                         
                         <h1 className="flex justify-center ">New here?</h1>
 
                         <button className="bg-blue-500
-                        hover:bg-blue-700 active:bg-gray-500 text-white p-1 rounded-lg  font-semibold " 
+                        hover:bg-blue-700 active:bg-gray-500 text-white p-2 rounded-lg  font-semibold " 
                         onClick={()=>(navigate("/sign-up"))}
                         >Create an Account</button>
                         

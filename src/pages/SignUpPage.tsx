@@ -55,7 +55,7 @@ function SignUpPage(){
     return (
         <>
             {/* login page container */}
-                        <div className="flex-col relative space-y-5 bg-white px-6 py-10  justify-center place-items-center rounded-xl">
+                        <div className="flex flex-col relative space-y-5 bg-white p-3 pb-5 pt-10  justify-center place-items-center rounded-xl">
 
                             <div className="bg-white border-b-4 border-t-2 border-t-white p-3 rounded-full absolute -top-10 text-blue-700">
                                 <BiUser size={70}/>
@@ -66,46 +66,46 @@ function SignUpPage(){
                             {/* Input */}
                             <form
                             onSubmit={submitHandler} 
-                            className="flex-col justify-center place-items-center space-y-7">
+                            className="flex flex-col justify-center p-1 text-sm place-items-center space-y-5">
             
-                                <div className="flex-col w-full justify-center place-items-center space-y-3">
-                                    <div className="flex w-full justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-2">
+                                <div className="flex flex-col justify-center place-items-center space-y-3">
+                                    <div className="flex justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-1">
                                         <label className="font-medium text-lg flex place-items-center p-1 border-r border-gray-300" htmlFor="text">
                                             <BiUser size={20}/>
                                         </label>
-                                        <input id="text" name="username" onChange={inputHandler} value={values.username} className=" h-10 p-2 rounded flex-1 outline-blue-300" type="text" placeholder="Enter your username" required />
+                                        <input id="text" name="username" onChange={inputHandler} value={values.username} className=" h-10 p-1 rounded flex-1 outline-blue-300" type="text" placeholder="Enter your username" required />
                                     </div>
 
-                                    <div className="flex w-full justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-2">
+                                    <div className="flex justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-1">
                                         <label className="font-medium text-lg flex place-items-center p-1 border-r border-gray-300" htmlFor="email">
                                             <MdOutlineEmail size={20}/>
                                         </label>
-                                        <input id="email" name="email" onChange={inputHandler} value={values.email} className=" h-10 p-2 rounded flex-1 outline-blue-300" type="text" placeholder="Enter your email" required />
+                                        <input id="email" name="email" onChange={inputHandler} value={values.email} className=" h-10 p-1 rounded flex-1 outline-blue-300" type="text" placeholder="Enter your email" required />
                                     </div>
             
-                                    <div className="flex w-full justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-2">
+                                    <div className="flex justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-1">
                                         <label className="font-medium text-lg flex place-items-center p-1 border-r border-gray-300" htmlFor="password">
                                             <MdLockOutline size={20}/>
                                         </label>
-                                        <input id="password" name="password" onChange={inputHandler} value={values.password} className= " h-10 p-2 rounded flex-1 outline-blue-300" type="password" placeholder="Enter your password"/>
+                                        <input id="password" name="password" onChange={inputHandler} value={values.password} className= " h-10 p-1 rounded flex-1 outline-blue-300" type="password" placeholder="Enter your password"/>
                                     </div>
 
-                                    <div className="flex w-full justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-2">
+                                    <div className="flex justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-1">
                                         <label className="font-medium text-lg flex place-items-center p-1 border-r border-gray-300" htmlFor="confirm-pass">
                                             <MdPassword size={20}/>
                                         </label>
-                                        <input id="confirm-pass" name="confirmPass" onChange={inputHandler} value={values.confirmPass} className= " h-10 p-2 rounded flex-1 outline-blue-300" type="password" placeholder="Confirm password"/>
+                                        <input id="confirm-pass" name="confirmPass" onChange={inputHandler} value={values.confirmPass} className= " h-10 p-1 rounded flex-1 outline-blue-300" type="password" placeholder="Confirm password"/>
                                     </div>
                                 </div>
                                 
                                 
-                                <div className="flex-col w-full space-y-2 justify-center">
-                                    <button className="bg-blue-500 hover:bg-blue-700 active:bg-gray-500 text-white p-1.5 rounded-lg w-full font-semibold text-lg" >Sign Up</button>
-                                    <br />
+                                <div className="flex flex-col w-full space-y-1 justify-center">
+                                    <button className="bg-blue-500 hover:bg-blue-700 active:bg-gray-500 text-white p-2 rounded-lg  font-semibold" >Sign Up</button>
+                                    
                                     <h1 className="flex justify-center ">or</h1>
             
                                     <button className="bg-blue-500
-                                    hover:bg-blue-700 active:bg-gray-500 text-white p-1.5 rounded-lg w-full font-semibold text-lg" 
+                                    hover:bg-blue-700 active:bg-gray-500 text-white p-2 rounded-lg  font-semibold " 
                                     onClick={()=>(navigate("/login"))}
                                     >I Have an Account</button>
                                     
