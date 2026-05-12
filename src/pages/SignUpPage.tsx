@@ -55,7 +55,7 @@ function SignUpPage(){
     return (
         <>
             {/* login page container */}
-                        <div className="flex flex-col relative space-y-5 p-5 bg-white p-3 pb-5 pt-10  justify-center place-items-center rounded-xl">
+                        <div className="flex flex-col relative space-y-5 p-5 bg-white pb-5 pt-10  justify-center place-items-center rounded-xl">
 
                             <div className="bg-white border-b-4 border-t-2 border-t-white p-3 rounded-full absolute -top-10 text-blue-700 shadow-md ring-4 ring-white">
                                 <BiUser size={70}/>
