@@ -9,6 +9,7 @@ import { RiKey2Line } from "react-icons/ri";
 import GroupTables from "../components/GroupTables";
 import JoinGroupForm from "../components/JoinGroupForm";
 import CreateGroupFrom from "../components/CreateGroupFrom";
+import { isAdmin } from "../store/Store";
 
 
 type JoinStateType = {
@@ -77,7 +78,7 @@ export default function GroupDashPage(){
                 }
 
             }
-                , 5000)
+                , 500)
             
             return () => clearTimeout(timeoutId)
         }, [])
@@ -104,7 +105,7 @@ export default function GroupDashPage(){
 
     const [joinState, setJoinState] = useState<boolean>(false);
     const [createGroupState, setCreateGroupState] = useState<boolean>(false);
-    
+    const {admin} = isAdmin();
 
     const headerElement = (
         <div className="flex  place-items-center w-[45%] max-md:w-full max-md:text-sm justify-evenly space-x-1  ">
@@ -117,7 +118,7 @@ export default function GroupDashPage(){
 
                     <div
                         onClick={()=>(setCreateGroupState(true))} 
-                        title="Create Group" className="flex flex-1 max-w-35 justify-center place-items-center bg-gray-400 hover:bg-gray-700 p-2 rounded gap-3 cursor-pointer">
+                        title="Create Group" className={`flex flex-1 max-w-35 justify-center place-items-center bg-gray-400 hover:bg-gray-700 p-2 rounded gap-3 cursor-pointer ${(admin)?"hidden":""}`}>
                         <MdOutlineGroupAdd />
                         Create 
                     </div>
@@ -139,7 +140,7 @@ export default function GroupDashPage(){
                         
                         <Header heading={"Groups"} element={headerElement}/>
                         
-                        <div className=" bg-[#e5e2e2] w-[98%] h-[90%] rounded-2xl overflow-auto "> 
+                        <div className="border border-slate-500/50 bg-slate-500/30 w-[98%] h-[90%] rounded-2xl overflow-auto "> 
         
                             {/* SUMMARY */}
                             <div  className="flex flex-wrap w-full p-3 gap-2 ">
@@ -155,7 +156,7 @@ export default function GroupDashPage(){
                             </div>
                                 
                             {/* JOINED GROUPS DISPLAY */}
-                            <div className="bg-white p-2 py-3 place-self-center w-[97%] rounded flex flex-col place-items-center relative">
+                            <div className="bg-slate-500/50 text-white p-2 py-3 place-self-center w-[97%] rounded flex flex-col place-items-center relative">
                                 <div className="flex gap-9 w-full place-items-center px-2 mb-2">
                                     <h1 className="font-bold  flex-2 ">Groups</h1>    
                                     {/* Search filter */}
@@ -164,7 +165,7 @@ export default function GroupDashPage(){
                                                placeholder="Search..."
                                                onChange={searchHandler}
                                                value = {search}
-                                               className="flex text-sm bg-[#e5e2e2] max-w-50 px-2 border-2 border-gray-300 rounded-lg h-7"
+                                               className="flex text-sm bg-[#e5e2e2] text-black max-w-50 px-2 border-2 border-gray-300 rounded-lg h-7"
                                         />
                                         
                                     </div>

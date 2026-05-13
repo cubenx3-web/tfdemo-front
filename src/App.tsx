@@ -18,14 +18,14 @@ function App() {
 
         {/* LOGIN PAGE */}
         <Route path='/login' element ={
-          <div className="relative flex w-screen h-screen bg-blue-300 justify-center items-center text-lg overflow-hidden">
+          <div className="relative flex w-screen h-screen bg-slate-900 justify-center items-center text-lg overflow-hidden">
             <LoginPage/>          
           </div>
         }/>
 
         {/* REGISTRATION PAGE */}
         <Route path='/sign-up' element ={
-          <div className="relative flex w-screen h-screen bg-blue-300 justify-center items-center text-lg overflow-hidden">
+          <div className="relative flex w-screen h-screen bg-slate-900 justify-center items-center text-lg overflow-hidden">
             <SignUpPage/>          
           </div>
         }/>
@@ -37,7 +37,7 @@ function App() {
         <Route path="/Dashboard" element={
           
           <ProtectedRoutes>
-            <div className="relative flex  w-full h-full text-lg transition-all duration-300 ease-in-out font-semibold bg-white overflow-hidden  ">
+            <div className="relative flex  w-full h-full text-lg transition-all duration-300 ease-in-out font-semibold bg-slate-900 overflow-hidden  ">
                 <DashBoardPage/>          
             </div>
           </ProtectedRoutes>
@@ -45,10 +45,10 @@ function App() {
         }/>  
 
         {/* ADMIN DASHBOARD PAGE */}
-        <Route path='/Admin' element ={
+        <Route path='/Admin-Panel' element ={
           <ProtectedRoutes>
             <AdminRoutes>
-              <div className="relative flex  w-full h-full text-lg transition-all duration-300 ease-in-out font-semibold bg-white overflow-hidden " >
+              <div className="relative flex  w-full h-full text-lg transition-all duration-300 ease-in-out font-semibold bg-slate-900 overflow-hidden " >
                 <AdminDashPage/>
               </div>
             </AdminRoutes>
@@ -60,7 +60,7 @@ function App() {
         <Route path="/Groups" element={
           
           <ProtectedRoutes>
-            <div className="relative flex  w-full h-full text-lg transition-all duration-300 ease-in-out font-semibold bg-white overflow-hidden">
+            <div className="relative flex  w-full h-full text-lg transition-all duration-300 ease-in-out font-semibold bg-slate-900 overflow-hidden">
                 <GroupDashPage/>          
             </div>
           </ProtectedRoutes>

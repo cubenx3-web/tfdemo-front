@@ -24,7 +24,6 @@ export default function DashBoardPage(){
 
     useEffect( ()=>{
          
-        //let timeoutId : ReturnType<typeof setTimeout>
         
         let timeoutId = setTimeout( async()=>
         {
@@ -34,7 +33,7 @@ export default function DashBoardPage(){
                     console.log(theSummary)
             }
         }
-            , 5000)
+            , 500)
         
         return () => clearTimeout(timeoutId)
     }, [])
@@ -74,7 +73,7 @@ export default function DashBoardPage(){
             <div className="relative flex-nowrap flex-14 space-y-2 w-full h-full place-items-center justify-center ">
                 
                 <Header heading={"Dashboard"} element={null}/>
-                <div className=" bg-[#e5e2e2] w-[98%] h-[90%] rounded-2xl "> 
+                <div className=" border border-slate-500/50 bg-slate-500/30 w-[98%]  h-[90%] rounded-2xl "> 
 
                     {/* SUMMARY */}
                     <div  className="flex flex-wrap w-full p-3 gap-2 ">
@@ -96,9 +95,6 @@ export default function DashBoardPage(){
                 </div>
 
             </div>
-
-            
-            
         </>
     )
 }

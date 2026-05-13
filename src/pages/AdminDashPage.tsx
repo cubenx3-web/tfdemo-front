@@ -31,7 +31,7 @@ export default function AdminDashPage(){
             }
 
         }   
-        ,1000)
+        ,100)
 
         return () => clearTimeout(timeoutId)
 
@@ -70,11 +70,11 @@ export default function AdminDashPage(){
 
     return (
         <>
-            <SideNav active={"Admin"}/>
+            <SideNav active={"Admin Panel"}/>
             <div className="relative flex-nowrap flex-14 space-y-2 w-full h-full place-items-center justify-center ">
                 
                 <Header heading={"Admin Dashboard"} element={null}/>
-                <div className=" bg-[#e5e2e2] w-[98%] h-[90%] rounded-2xl "> 
+                <div className=" border border-slate-500/50 bg-slate-500/30 w-[98%] h-[90%] rounded-2xl "> 
 
                     {/* SUMMARY */}
                     <div className="flex flex-wrap w-full p-3 space-x-2 space-y-2 ">

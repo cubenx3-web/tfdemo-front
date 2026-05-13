@@ -66,3 +66,26 @@ export async function leaveGroupApi(groupCode:string){
     
     ))
 }
+
+// CANCEL REQUEST
+export async function cancelGroupRequestApi(groupCode:string){
+    
+    const email = localStorage.getItem("email");
+    const token = localStorage.getItem("token");
+
+
+    return ( await api.put("/cancel-request",
+       
+        {
+            "email":email,
+            "groupCode":groupCode
+        },
+
+        {
+            headers:{
+                Authorization: `Bearer ${token?.toString()}`
+                }
+        }
+    
+    ))
+}

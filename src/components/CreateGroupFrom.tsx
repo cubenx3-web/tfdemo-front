@@ -28,7 +28,7 @@ export default function (){
               msgType: create_group?.msgType as MsgType 
         });
         
-        (create_group.isSent)? (cG?.setCreateGroupState(false), navigate("/Admin") ):null
+        (create_group.isSent)? (cG?.setCreateGroupState(false), navigate("/Admin-Panel") ):null
 
 
 

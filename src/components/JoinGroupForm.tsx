@@ -41,16 +41,16 @@ export default function JoinGroupForm(){
 
     return (
 
-        <div className={`absolute flex place-items-center justify-center bg-blue-500/20 left-1/2 min-w-[70%] min-h-[40%] p-4  transition-all rounded-lg  backdrop-blur-sm duration-600 z-1  place-self-center -translate-y-1/2 top-1/2 ${(j?.joinState)?"-translate-x-1/2":"translate-x-full"}`}>
+        <div className={`absolute flex place-items-center justify-center bg-blue-50/50 left-1/2 min-w-[70%] min-h-[40%] p-4  transition-all rounded-lg  backdrop-blur-sm duration-600 z-1  place-self-center -translate-y-1/2 top-1/2 ${(j?.joinState)?"-translate-x-1/2":"translate-x-full"}`}>
             
             <IoCloseCircle size={30} onClick={()=>(j?.setJoinState(false), setGroupCode(""))} 
                            className="cursor-pointer hover:text-red-500 active:text-red-900 absolute top-2 right-5" />
 
             
 
-            <form onSubmit={submitHander} className="flex flex-col gap-3 bg-white p-4 rounded-lg h-[90%] sm:w-[70%] max-sm:w-full justify-center" >
-                <div className="text-blue-600 text-xl font-bold">Join Group {}</div>
-                <input type="text" title="" onChange={(e)=>setGroupCode(e.target.value)} className="border rounded p-1 font-normal" value={groupCode} placeholder="Enter Group Code" required/>
+            <form onSubmit={submitHander} className="flex flex-col gap-3 bg-slate-500/70 p-4 rounded-lg h-[90%] sm:w-[70%] max-sm:w-full justify-center" >
+                <div className="text-white text-xl font-bold">Join Group {}</div>
+                <input type="text" title="" onChange={(e)=>setGroupCode(e.target.value)} className="border rounded p-1 font-normal bg-slate-600 text-blue-50" value={groupCode} placeholder="Enter Group Code" required/>
                 <button type="submit" className="bg-blue-600 cursor-pointer text-white rounded-lg p-1 hover:bg-blue-900 active:bg-blue-400"> Join </button>
             </form>
 
