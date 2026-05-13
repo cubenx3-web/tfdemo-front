@@ -7,6 +7,7 @@ import AdminDashPage from "./pages/AdminDashPage"
 import GroupDashPage from "./pages/GroupDashPage"
 import PopMsg from "./components/PopMsg"
 import AdminRoutes from "./security/AdminRoutes"
+import Confirmation from "./components/Confirmation"
 
 function App() {
 
@@ -71,6 +72,7 @@ function App() {
       </Routes>
 
       <PopMsg/>
+      <Confirmation/>
     </>
   )
 }

@@ -2,7 +2,7 @@ import { useContext, useState, type FormEvent } from "react"
 import { joinGroup } from "../service/GroupService/GroupService";
 import { JoinStateContext } from "../pages/GroupDashPage";
 import { IoCloseCircle } from "react-icons/io5";
-import { slideMsg } from "../store/ComponentState";
+import { confirmationState, slideMsg } from "../store/ComponentState";
 
 
 export default function JoinGroupForm(){
@@ -14,20 +14,26 @@ export default function JoinGroupForm(){
     const [groupCode, setGroupCode] = useState<string>("");
     
 
-    async function submitHander(e:FormEvent){
+    function submitHander(e:FormEvent){
         e.preventDefault();
+ 
+        
+        async function confirm (){
+           (groupCode.trim() === "")? slideMsg.getState().setSlideMsg( {show:true, msg:"Enter Group Code", msgType:"error"} ) :null;
+           let join = await joinGroup(groupCode)
+           
+           // Submit request to join Group
+           type MsgType = "error"|"success"|"normal";
+           slideMsg.getState().setSlideMsg( {show:true, msg:join?.msg, msgType:join?.msgType as MsgType} );
+           (join?.isSent) ? j?.setJoinState(false):j?.setJoinState(true);
+        } 
 
-        const {setSlideMsg} = slideMsg();
-        (groupCode.trim() === "")? setSlideMsg( {show:true, msg:"Enter Group Code", msgType:"error"} ) :null;
-
-        let join = await joinGroup(groupCode)
-
-        // Submit request to join Group
-        type MsgType = "error"|"success"|"normal";
-            
-        setSlideMsg( {show:true, msg:join?.msg, msgType:join?.msgType as MsgType} );
-
-        (join?.isSent) ? setSlideMsg:null;
+        confirmationState.getState().setConfirmationState({
+            msg:"Do you Want to join This Group", 
+            onConfirm:confirm,
+            showConfirm:true
+        })
+        
 
     }
 

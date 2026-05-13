@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { confirmationState, slideMsg } from "../store/ComponentState"
+import { leaveGroup } from "../service/UserService/UserService."
 
 
 
@@ -24,6 +26,23 @@ export default function GroupTables({groups, waitingApproval, search}:{groups:Gr
 
     const [table, setTable] = useState<TableType>("Joined Groups")
     
+    function leaveG(groupCode:string){
+
+        async function leave(){
+            let l = await leaveGroup(groupCode);
+            
+            type MsgType = "error"|"normal"|"success";
+            slideMsg.getState().setSlideMsg({show:true, msg:l?.msg, msgType:l?.msgType as MsgType});
+            
+        }
+        confirmationState.getState().setConfirmationState({
+            msg:"Do you want to leave the group?",
+            onConfirm: leave,
+            showConfirm:true
+        })
+
+    }
+
     function handleTable(t:TableType){
         setTable(t);
     }
@@ -63,6 +82,7 @@ export default function GroupTables({groups, waitingApproval, search}:{groups:Gr
                                             <td className="p-3">{g.projects}</td>
                                             <td className="">
                                                 <button 
+                                                    onClick={()=>leaveG(g.groupCode)}
                                                     className="bg-red-500 hover:bg-amber-800 active:bg-red-500  p-1 px-3 text-white w-10/12 rounded-2xl max-sm:text-xs">
                                                         Leave
                                                 </button>

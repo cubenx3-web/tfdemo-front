@@ -1,4 +1,4 @@
-import {  getGroups, getSummary } from "../../api/UserApi/UserApi";
+import {  getGroups, getSummary, leaveGroupApi } from "../../api/UserApi/UserApi";
 
 
 
@@ -74,4 +74,34 @@ export async function getUserSummary(){
         return null
 
     }
+}
+
+export async function leaveGroup(groupCode:string){
+
+    try{
+        const email = localStorage.getItem("email");
+
+        if(email)  {
+            const response = (await leaveGroupApi(groupCode)).data;
+
+            return{
+                msg: response.message,
+                msgType: "normal",
+                success:true
+                }
+        }
+        else{
+            window.location.href= "/login"
+        }
+
+    }catch(e:any){
+
+        return{
+           msg:e.response.data.message,
+            msgType: "error",
+            success:false 
+        }
+    }
+
+
 }

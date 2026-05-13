@@ -44,3 +44,25 @@ export  const getSummary = async() =>{
         },
     ) );
 }
+
+export async function leaveGroupApi(groupCode:string){
+    
+    const email = localStorage.getItem("email");
+    const token = localStorage.getItem("token");
+
+
+    return ( await api.put("/leave-group",
+       
+        {
+            "email":email,
+            "groupCode":groupCode
+        },
+
+        {
+            headers:{
+                Authorization: `Bearer ${token?.toString()}`
+                }
+        }
+    
+    ))
+}
