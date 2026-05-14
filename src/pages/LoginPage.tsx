@@ -63,8 +63,8 @@ function LoginPage(){
             {/* login page container */}
             <div className="flex-col relative space-y-5 p-5 bg-slate-600/20 pb-5 pt-10 border-2 border-white/30 shadow-white  justify-center place-items-center rounded-xl">
 
-                <div className="bg-slate-700 border-b-4 border border-t-slate-700 border-l-slate-700 border-r-slate-700 p-3 rounded-full absolute -top-10 text-indigo-400 shadow-lg shadow-white shadow-olive-1 ring-5 ring-slate-700">
-                    <BiUser size={70}/>
+                <div className="bg-slate-700 border-b-4 border border-t-slate-700 border-l-slate-700 border-r-slate-700 p-1 rounded-full absolute -top-10 text-indigo-400 shadow-lg shadow-white shadow-olive-1 ring-5 ring-slate-700">
+                    <BiUser size={65}/>
                 </div>
 
                 <h2 className=" font-semibold text-2xl text-indigo-400 text-center mt-10 underline underline-offset-1">Login</h2>
