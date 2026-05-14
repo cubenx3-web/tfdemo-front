@@ -55,7 +55,7 @@ function SignUpPage(){
     return (
         <>
             {/* login page container */}
-                        <div className="flex flex-col relative space-y-5 p-5 bg-slate-600/20 pb-5 pt-10 border-2 border-white/30  justify-center place-items-center rounded-xl">
+                        <div className="flex flex-col relative space-y-5 p-5 bg-slate-700/30 pb-5 pt-10 justify-center place-items-center rounded-xl">
 
                             <div className="bg-slate-700 border-b-4 border border-t-slate-700 border-l-slate-700 border-r-slate-700 p-1 rounded-full absolute -top-10 text-indigo-400 shadow-lg  shadow-olive-1 ring-5 ring-slate-700">
                                 <BiUser size={65}/>
@@ -100,11 +100,11 @@ function SignUpPage(){
                                 
                                 
                                 <div className="flex flex-col w-full space-y-1 justify-center">
-                                    <button type="submit" className="bg-blue-500 hover:bg-blue-700 active:bg-gray-500 text-white p-2 rounded-lg  font-semibold" >Sign Up</button>
+                                    <button type="submit" className="bg-blue-500/50 hover:bg-blue-700 active:bg-gray-500 text-white p-2 rounded-lg  font-semibold" >Sign Up</button>
                                     
                                     <h1 className="flex justify-center ">or</h1>
             
-                                    <button type="button" className="bg-blue-500
+                                    <button type="button" className="bg-blue-500/50
                                     hover:bg-blue-700 active:bg-gray-500 text-white p-2 rounded-lg  font-semibold " 
                                     onClick={()=>(navigate("/login"))}
                                     >I Have an Account</button>
