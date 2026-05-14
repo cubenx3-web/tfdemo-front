@@ -55,10 +55,10 @@ function SignUpPage(){
     return (
         <>
             {/* login page container */}
-                        <div className="flex flex-col relative space-y-5 p-5 bg-slate-600/20 pb-5 pt-10 border-2 border-white/30 shadow-white justify-center place-items-center rounded-xl">
+                        <div className="flex flex-col relative space-y-5 p-5 bg-slate-600/20 pb-5 pt-10 border-2 border-white/30  justify-center place-items-center rounded-xl">
 
-                            <div className="bg-slate-700 border-b-4 border border-t-slate-700 border-l-slate-700 border-r-slate-700 p-3 rounded-full absolute -top-10 text-indigo-400 shadow-lg shadow-white shadow-olive-1 ring-5 ring-slate-700">
-                                <BiUser size={70}/>
+                            <div className="bg-slate-700 border-b-4 border border-t-slate-700 border-l-slate-700 border-r-slate-700 p-1 rounded-full absolute -top-10 text-indigo-400 shadow-lg  shadow-olive-1 ring-5 ring-slate-700">
+                                <BiUser size={65}/>
                             </div>
 
                             <h2 className=" font-semibold text-2xl text-indigo-400 text-center mt-10 underline underline-offset-1">Sign Up</h2>
@@ -69,28 +69,28 @@ function SignUpPage(){
                             className="flex flex-col justify-center text-blue-50 p-1 text-sm place-items-center space-y-5">
             
                                 <div className="flex flex-col justify-center place-items-center space-y-2">
-                                    <div className="flex justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-1">
+                                    <div className="flex justify-center place-items-center space-x-2 border-2 border-gray-300/30 rounded-lg px-1">
                                         <label className="font-medium text-lg flex place-items-center p-1 border-r border-gray-300" htmlFor="text">
                                             <BiUser size={20}/>
                                         </label>
                                         <input id="text" name="username" onChange={inputHandler} value={values.username} className=" h-10 p-1 rounded flex-1 outline-gray-200/30" type="text" placeholder="Enter your username" required />
                                     </div>
 
-                                    <div className="flex justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-1">
+                                    <div className="flex justify-center place-items-center space-x-2 border-2 border-gray-300/30 rounded-lg px-1">
                                         <label className="font-medium text-lg flex place-items-center p-1 border-r border-gray-300" htmlFor="email">
                                             <MdOutlineEmail size={20}/>
                                         </label>
                                         <input id="email" name="email" onChange={inputHandler} value={values.email} className=" h-10 p-1 rounded flex-1 outline-gray-200/30" type="text" placeholder="Enter your email" required />
                                     </div>
             
-                                    <div className="flex justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-1">
+                                    <div className="flex justify-center place-items-center space-x-2 border-2 border-gray-300/30 rounded-lg px-1">
                                         <label className="font-medium text-lg flex place-items-center p-1 border-r border-gray-300" htmlFor="password">
                                             <MdLockOutline size={20}/>
                                         </label>
                                         <input id="password" name="password" onChange={inputHandler} value={values.password} className= " h-10 p-1 rounded flex-1 outline-gray-200/30" type="password" placeholder="Enter your password"/>
                                     </div>
 
-                                    <div className="flex justify-center place-items-center space-x-2 border border-gray-300 rounded-lg px-1">
+                                    <div className="flex justify-center place-items-center space-x-2 border-2 border-gray-300/30 rounded-lg px-1">
                                         <label className="font-medium text-lg flex place-items-center p-1 border-r border-gray-300" htmlFor="confirm-pass">
                                             <MdPassword size={20}/>
                                         </label>
