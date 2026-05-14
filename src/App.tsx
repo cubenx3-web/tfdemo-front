@@ -8,6 +8,8 @@ import GroupDashPage from "./pages/GroupDashPage"
 import PopMsg from "./components/PopMsg"
 import AdminRoutes from "./security/AdminRoutes"
 import Confirmation from "./components/Confirmation"
+import CreateGroupFrom from "./components/CreateGroupFrom"
+import JoinGroupForm from "./components/JoinGroupForm"
 
 function App() {
 
@@ -73,6 +75,8 @@ function App() {
 
       <PopMsg/>
       <Confirmation/>
+      <CreateGroupFrom/>
+      <JoinGroupForm/>
     </>
   )
 }

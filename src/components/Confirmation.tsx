@@ -17,8 +17,8 @@ export default function Confirmation(){
     }
 
     return(
-        <div className={`absolute z-3  ${(showConfirm)?"top-1/2":"-top-1/2 opacity-0"} -translate-y-1/2 transition-all duration-800 w`}>
-            <div className={`p-3 bg-linear-to-tr from-gray-900 to-blue-500 text-white rounded-lg flex flex-col gap-5 `}>
+        <div className={`absolute z-3  ${(showConfirm)?"top-1/2 opacity-90":"-top-1/2 scale-0 opacity-0"} -translate-y-1/2 transition-all duration-600 w`}>
+            <div className={`p-3 bg-slate-700 text-white rounded-lg flex flex-col gap-5 `}>
                 <div className="text-center">{msg}</div>
                 <div className="flex gap-2 justify-center">
                     <div onClick={confirm} className=" bg-green-500 hover:bg-green-700 active:bg-green-300 cursor-pointer text-white p-1 rounded-lg ">Confirm</div>

@@ -33,3 +33,28 @@ export const confirmationState = create<ConfirmationType>((set)=>({
     showConfirm: false,
     setConfirmationState: ({msg, onConfirm, showConfirm}) => set({msg:msg, onConfirm:onConfirm, showConfirm:showConfirm})
 }))
+
+
+// CREATE GROUP FORM COMPONENT
+type createGroupType ={
+    groupFormState: boolean;
+    setGroupFormState: ({groupFormState}:{groupFormState:boolean}) =>void;
+}
+
+export const createGroupFormState = create<createGroupType>((set)=>({
+    groupFormState:false,
+    setGroupFormState: ({groupFormState}) => set({groupFormState:groupFormState})
+}))
+
+
+
+// CREATE JOIN GROUP FORM COMPONENT
+type joinGroupType ={
+    joinState: boolean;
+    setJoinGroupFormState: ({joinState}:{joinState:boolean}) =>void;
+}
+
+export const joinGroupFormState = create<joinGroupType>((set)=>({
+    joinState:false,
+    setJoinGroupFormState: ({joinState}) => set({joinState:joinState})
+}))

@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { BiLogOut, BiMessage, BiTask, BiUser } from "react-icons/bi";
-import { CgArrowLeft } from "react-icons/cg";
 import { MdAdminPanelSettings, MdDashboard, MdGroup } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { logout } from "../service/LogoutHandler";
 import { HiFolderOpen, HiUserGroup } from "react-icons/hi2";
 import { isAdmin } from "../store/Store";
+import {  TbArrowBigLeftFilled } from "react-icons/tb";
 
 type Props = {
     active: string
@@ -82,10 +82,10 @@ export default function SideNav(active: Props){
         ${sliderStyle[slideState].sliderNav}
         max-sm:absolute z-1  
         `}>
-            <CgArrowLeft size={22} 
+            <TbArrowBigLeftFilled size={22} 
                 onClick={handleSlide}
                 className={`
-                absolute  text-white bg-gray-900 p-1 rounded-lg -right-2 top-22 transition-transform duration-400 ease-in hover:bg-blue-500 border border-blue-100
+                absolute  text-white bg-slate-600/50 p-1 rounded-lg -right-2 top-22 transition-transform duration-400 ease-in hover:bg-blue-500 border border-gray-300/50
                 ${sliderStyle[slideState].sliderIcon} 
                 `}
             /> 
@@ -93,14 +93,14 @@ export default function SideNav(active: Props){
             <GiHamburgerMenu size ={25}
                     onClick={handleSlide}
                     className={`
-                    absolute  text-white bg-blue-500 p-1 rounded-lg right-[-90%] top-[2%]  transition-all duration-400 ease-in hover:bg-blue-950
+                    absolute  text-white bg-slate-900 p-1 rounded-lg right-[-90%] top-[2%]  transition-all duration-400 ease-in hover:bg-blue-950
                     ${sliderStyle[slideState].sliderIcon2} 
                 `}
             />
 
             <div className="place-self-center">
-                <div className="bg-slate-700 border-b-4 border border-t-slate-700 border-l-slate-700 border-r-slate-700 p-1 place-items-center rounded-full text-indigo-400  ring-5 ring-slate-700">
-                    <BiUser size={20}/>
+                <div className="bg-slate-700 border-b-4 border border-t-slate-700 border-l-slate-700 border-r-slate-700 p-1 place-items-center rounded-full text-indigo-400 ring-5 ring-slate-700">
+                    <BiUser size={35}/>
                 </div>
             </div>             
 

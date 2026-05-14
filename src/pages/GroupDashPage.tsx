@@ -3,28 +3,14 @@ import Header from "../components/Header";
 import SideNav from "../components/SideNav";
 import { IoTimerOutline } from "react-icons/io5";
 import StatusCard from "../components/StatusCard";
-import React, { createContext, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { getUserGroups, getUserSummary } from "../service/UserService/UserService.";
 import { RiKey2Line } from "react-icons/ri";
 import GroupTables from "../components/GroupTables";
-import JoinGroupForm from "../components/JoinGroupForm";
-import CreateGroupFrom from "../components/CreateGroupFrom";
 import { isAdmin } from "../store/Store";
+import { createGroupFormState, joinGroupFormState } from "../store/ComponentState";
 
 
-type JoinStateType = {
-    joinState : boolean;
-    setJoinState: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-type CreateGroupType = {
-    createGroupState : boolean;
-    setCreateGroupState: React.Dispatch<React.SetStateAction<boolean>>;
-
-}
-
-export const JoinStateContext = createContext<JoinStateType|null>(null);
-export const CreateGroupContext = createContext<CreateGroupType|null>(null);
 
 export default function GroupDashPage(){
 
@@ -103,21 +89,22 @@ export default function GroupDashPage(){
     // const [groups, setGroups] = useState(null)    
 
 
-    const [joinState, setJoinState] = useState<boolean>(false);
-    const [createGroupState, setCreateGroupState] = useState<boolean>(false);
+    const { setJoinGroupFormState} = joinGroupFormState();
+    const {setGroupFormState} = createGroupFormState();
+
     const {admin} = isAdmin();
 
     const headerElement = (
         <div className="flex  place-items-center w-[45%] max-md:w-full max-md:text-sm justify-evenly space-x-1  ">
                     <div
-                     onClick={()=>(setJoinState(true))}
+                     onClick={()=>(setJoinGroupFormState({joinState:true}))}
                      title="Join Group" className="flex flex-1 max-w-35 justify-center place-items-center bg-blue-400 hover:bg-blue-900 p-2 rounded gap-3 cursor-pointer">
                         <RiKey2Line />
                         Join 
                     </div>
 
                     <div
-                        onClick={()=>(setCreateGroupState(true))} 
+                        onClick={()=>(setGroupFormState({groupFormState:true}))} 
                         title="Create Group" className={`flex flex-1 max-w-35 justify-center place-items-center bg-gray-400 hover:bg-gray-700 p-2 rounded gap-3 cursor-pointer ${(admin)?"hidden":""}`}>
                         <MdOutlineGroupAdd />
                         Create 
@@ -179,13 +166,6 @@ export default function GroupDashPage(){
          
                     </div>
 
-                    <JoinStateContext.Provider value={{joinState, setJoinState}}>
-                        <JoinGroupForm />
-                    </JoinStateContext.Provider>
-
-                    <CreateGroupContext.Provider value={{createGroupState, setCreateGroupState}}>
-                        <CreateGroupFrom/>
-                    </CreateGroupContext.Provider>
 
                     
         </>
