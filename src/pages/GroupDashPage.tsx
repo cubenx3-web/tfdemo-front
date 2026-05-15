@@ -147,7 +147,7 @@ export default function GroupDashPage(){
                                 <div className="flex gap-9 w-full place-items-center px-2 mb-2">
                                     <h1 className="font-bold flex-1">Groups</h1>    
                                     {/* Search filter */}
-                                    <div className="">
+                                    <div className="flex  gap-">
                                         <input type="text" 
                                                placeholder="Search..."
                                                onChange={searchHandler}
