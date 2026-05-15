@@ -21,7 +21,7 @@ function App() {
 
         {/* LOGIN PAGE */}
         <Route path='/login' element ={
-          <div className="relative flex w-screen h-screen bg-slate-900 justify-center items-center text-lg">
+          <div className="relative  w-screen h-screen bg-slate-900 justify-center items-center text-lg">
             <LoginPage/>          
           </div>
         }/>

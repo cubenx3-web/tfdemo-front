@@ -65,7 +65,7 @@ function LoginPage(){
     return (
         <>  
             {/* login page container */}
-            <div className="flex flex-col relative gap-5 p-5 bg-slate-700/50 pb-5  justify-center place-items-center rounded-xl">
+            <div className="flex flex-col relative gap-5 p-5 bg-slate-700/50 pb-5 translate-y-1/4 place-self-center  justify-center place-items-center rounded-xl">
 
                 <div className="bg-slate-700 border-b-4 border border-t-slate-700 -my-5  border-l-slate-700 border-r-slate-700 p-1 rounded-full -translate-y-1/2 text-indigo-400 shadow-lg  shadow-olive-1 ring-5 ring-slate-700">
                     <BiUser size={65}/>
