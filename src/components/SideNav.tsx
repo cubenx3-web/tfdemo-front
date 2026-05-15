@@ -82,18 +82,18 @@ export default function SideNav(active: Props){
         ${sliderStyle[slideState].sliderNav}
         max-sm:absolute z-1  
         `}>
-            <TbArrowBigLeftFilled size={22} 
+            <TbArrowBigLeftFilled size={20} 
                 onClick={handleSlide}
                 className={`
-                absolute  text-white bg-slate-600/50 p-1 rounded-lg -translate-x-full left-full top-19 transition-transform duration-400 ease-out hover:bg-blue-500 border border-gray-300/50
+                absolute  text-white bg-slate-600/50  rounded-lg -translate-x-full left-full top-19 transition-transform duration-400 ease-out hover:bg-blue-500
                 ${sliderStyle[slideState].sliderIcon} 
                 `}
             /> 
 
-            <GiHamburgerMenu size ={25}
+            <GiHamburgerMenu size ={20}
                     onClick={handleSlide}
                     className={`
-                    absolute  text-white bg-slate-900 p-1 rounded-lg right-[-90%] top-[2%]  transition-all duration-400 ease-in hover:bg-blue-950
+                    absolute  text-white bg-slate-900  rounded right-[-90%] top-[2%]  transition-opacity duration-300 ease-in  hover:bg-blue-500
                     ${sliderStyle[slideState].sliderIcon2} 
                 `}
             />
