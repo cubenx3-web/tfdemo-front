@@ -28,7 +28,7 @@ export function PopMsg(){
         <div 
         onClick={()=>(setSlideMsg( {msg:msg, msgType:"normal", show:false} ))}
         className={`
-           cursor-pointer absolute bottom-[1%] right-[5%] border p-3 rounded-lg z-3 ${color[msgType||"normal"]} ${show?"opacity-100 translate-x-0 animate-bounce" : "opacity-50 translate-x-100 animate-spin"} duration-700
+           cursor-pointer absolute bottom-1/12 right-1/20 border p-3 rounded-lg z-3 ${color[msgType||"normal"]} ${show?"opacity-100 translate-x-0 animate-bounce" : "opacity-0 translate-x-100"} duration-700
         `}>
             <h3 className="flex gap-3 place-items-center">{icon[msgType||"normal"]} {msg} <MdOutlineTouchApp size={20} /> </h3>
         </div>
