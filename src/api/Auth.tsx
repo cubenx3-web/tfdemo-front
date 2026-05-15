@@ -1,7 +1,9 @@
 import axios from "axios";
+import { apiUrl } from "../store/ApiStore";
+
 
 const API = axios.create({
-    baseURL: "http://localhost:8080/api/v1/auth"
+    baseURL: apiUrl.getState().localApi+"/auth"
 });
 
 // LOGIN 

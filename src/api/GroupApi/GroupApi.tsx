@@ -1,6 +1,7 @@
 import axios from "axios";
+import { apiUrl } from "../../store/ApiStore";
 
-const groupApi = "http://localhost:8080/api/v1/group"
+const groupApi = apiUrl.getState().localApi+"/group"
 
 const api = axios.create(
     {

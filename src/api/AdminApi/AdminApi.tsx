@@ -1,6 +1,7 @@
 import axios from "axios";
+import { apiUrl } from "../../store/ApiStore";
 
-const adminApi = "http://localhost:8080/api/v1/admin"
+const adminApi = apiUrl.getState().localApi+"/admin"
 
 const api = axios.create(
     {

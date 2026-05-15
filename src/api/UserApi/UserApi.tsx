@@ -1,6 +1,7 @@
 import axios from "axios";
+import { apiUrl } from "../../store/ApiStore";
 
-const userApi = "http://localhost:8080/api/v1/user"
+const userApi = apiUrl.getState().localApi+"/user"
 
 const api = axios.create(
     {

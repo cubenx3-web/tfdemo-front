@@ -85,7 +85,7 @@ export default function SideNav(active: Props){
             <TbArrowBigLeftFilled size={22} 
                 onClick={handleSlide}
                 className={`
-                absolute  text-white bg-slate-600/50 p-1 rounded-lg -right-2 top-22 transition-transform duration-400 ease-in hover:bg-blue-500 border border-gray-300/50
+                absolute  text-white bg-slate-600/50 p-1 rounded-lg -right-3 top-19 transition-transform duration-400 ease-in hover:bg-blue-500 border border-gray-300/50
                 ${sliderStyle[slideState].sliderIcon} 
                 `}
             /> 
@@ -100,7 +100,7 @@ export default function SideNav(active: Props){
 
             <div className="place-self-center">
                 <div className="bg-slate-700 border-b-4 border border-t-slate-700 border-l-slate-700 border-r-slate-700 p-1 place-items-center rounded-full text-indigo-400 ring-5 ring-slate-700">
-                    <BiUser size={35}/>
+                    <BiUser size={40}/>
                 </div>
             </div>             
 
