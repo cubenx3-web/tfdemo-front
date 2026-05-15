@@ -85,7 +85,7 @@ export default function SideNav(active: Props){
             <TbArrowBigLeftFilled size={22} 
                 onClick={handleSlide}
                 className={`
-                absolute  text-white bg-slate-600/50 p-1 rounded-lg -right-3 top-19 transition-transform duration-400 ease-in hover:bg-blue-500 border border-gray-300/50
+                absolute  text-white bg-slate-600/50 p-1 rounded-lg -translate-x-1/2 left-full top-19 transition-transform duration-400 ease-in hover:bg-blue-500 border border-gray-300/50
                 ${sliderStyle[slideState].sliderIcon} 
                 `}
             /> 
