@@ -4,6 +4,7 @@ import {MdLockOutline, MdOutlineEmail } from "react-icons/md";
 import { useNavigate } from "react-router";
 import { loginHandler } from "../service/LoginHandler";
 import { slideMsg } from "../store/ComponentState";
+import { IsLoading } from "../store/IsLoading";
 
 
 function LoginPage(){
@@ -39,8 +40,9 @@ function LoginPage(){
     async function submitHandler(e:FormEvent){
         e.preventDefault(); 
 
+        IsLoading.getState().isLoading(true)
         let login = await loginHandler(values);
-        
+        IsLoading.getState().isLoading(false);
         (login.isLogin)?( setSlideMsg( {
             show:true, 
             msg:login.message, 
@@ -52,7 +54,9 @@ function LoginPage(){
             msgType:"error"
         } );
 
-        (login.isLogin)?(setTimeout(() => {navigate("/Dashboard")},1000)):null
+        (login.isLogin)?(setTimeout(() => {
+            navigate("/Dashboard")
+        },100)):null
 
     }
 
@@ -61,13 +65,13 @@ function LoginPage(){
     return (
         <>  
             {/* login page container */}
-            <div className="flex flex-col relative gap-5 p-5 bg-slate-700/50 pb-5 pt-10  justify-center place-items-center rounded-xl">
+            <div className="flex flex-col relative gap-5 p-5 bg-slate-700/50 pb-5  justify-center place-items-center rounded-xl">
 
-                <div className="bg-slate-700 border-b-4 border border-t-slate-700 border-l-slate-700 border-r-slate-700 p-1 rounded-full absolute -top-10 text-indigo-400 shadow-lg  shadow-olive-1 ring-5 ring-slate-700">
+                <div className="bg-slate-700 border-b-4 border border-t-slate-700 -my-5  border-l-slate-700 border-r-slate-700 p-1 rounded-full -translate-y-1/2 text-indigo-400 shadow-lg  shadow-olive-1 ring-5 ring-slate-700">
                     <BiUser size={65}/>
                 </div>
 
-                <h2 className=" font-semibold text-2xl text-indigo-400 text-center mt-10 underline underline-offset-1">Login</h2>
+                <h2 className=" font-semibold text-2xl text-indigo-400 text-center underline underline-offset-1">Login</h2>
 
                 {/* Input */}
                 <form onSubmit={submitHandler} className="flex flex-col justify-center text-blue-50 p-1 text-sm place-items-center space-y-5">

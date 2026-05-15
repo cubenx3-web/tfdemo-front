@@ -1,7 +1,6 @@
 import { loginUser } from "../api/Auth";
 import { jwtDecode } from "jwt-decode";
 import { isAdmin } from "../store/Store";
-
 type tokenType = {
     admin : boolean,
     exp: Number,
@@ -31,6 +30,7 @@ export const loginHandler = async (data: {email: string, password: string}) =>{
 
         localStorage.setItem("isAdmin", JSON.stringify(isAdminState))
         localStorage.setItem("email", decode.sub.toString())
+        
 
         return {
             isLogin:true,

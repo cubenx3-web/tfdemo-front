@@ -70,10 +70,10 @@ export default function DashBoardPage(){
     return (
         <>
             <SideNav active={"Dashboard"}/>
-            <div className="relative flex flex-col flex-nowrap flex-14 space-y-2 w-full h-full place-items-center justify-center ">
+            <div className="relative flex flex-col flex-14 space-y-2 w-full h-full place-items-center justify-center ">
                 
                 <Header heading={"Dashboard"} element={null}/>
-                <div className=" border border-slate-500/50 bg-slate-500/30 w-97/100 h-full rounded-2xl flex flex-col overflow-y-scroll sc scroll-smooth"> 
+                <div className=" border border-slate-500/50 bg-slate-500/30 w-97/100 h-full rounded-2xl flex flex-col overflow-y-auto scroll-smooth"> 
 
                     {/* SUMMARY */}
                     <div  className="flex flex-wrap w-full p-3 gap-2 ">

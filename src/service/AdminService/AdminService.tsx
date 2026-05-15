@@ -1,4 +1,5 @@
 import { getAdminSummary } from "../../api/AdminApi/AdminApi";
+import { IsLoading } from "../../store/IsLoading";
 
 
 
@@ -6,6 +7,7 @@ export async function adminSummary(){
 
     try{
         const response = await getAdminSummary();
+        IsLoading.getState().isLoading(false);
 
         return{
             "totalGroups":response.data.totalGroups,
@@ -16,7 +18,7 @@ export async function adminSummary(){
     }
     catch(e:any){
 
-
+        IsLoading.getState().isLoading(false)
         return{
             "totalGroups":0,
             "pending":0,

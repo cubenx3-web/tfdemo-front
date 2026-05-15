@@ -10,6 +10,7 @@ import AdminRoutes from "./security/AdminRoutes"
 import Confirmation from "./components/Confirmation"
 import CreateGroupFrom from "./components/CreateGroupFrom"
 import JoinGroupForm from "./components/JoinGroupForm"
+import Loading from "./components/Loading"
 
 function App() {
 
@@ -20,14 +21,14 @@ function App() {
 
         {/* LOGIN PAGE */}
         <Route path='/login' element ={
-          <div className="relative flex w-full h-lvh bg-slate-900 justify-center items-center text-lg">
+          <div className="relative flex w-screen h-screen bg-slate-900 justify-center items-center text-lg place-item-center">
             <LoginPage/>          
           </div>
         }/>
 
         {/* REGISTRATION PAGE */}
         <Route path='/sign-up' element ={
-          <div className="relative flex w-screen h-screen bg-slate-900 justify-center items-center text-lg">
+          <div className="relative flex w-screen h-screen bg-slate-900 justify-center items-center text-lg place-item-center">
             <SignUpPage/>          
           </div>
         }/>
@@ -77,6 +78,7 @@ function App() {
       <Confirmation/>
       <CreateGroupFrom/>
       <JoinGroupForm/>
+      <Loading/>
     </>
   )
 }

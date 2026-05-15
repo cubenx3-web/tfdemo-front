@@ -3,6 +3,7 @@ import { IoCloseCircle } from "react-icons/io5";
 import { createGroup } from "../service/GroupService/GroupService";
 import { useNavigate } from "react-router";
 import { confirmationState, createGroupFormState, slideMsg } from "../store/ComponentState";
+import { IsLoading } from "../store/IsLoading";
 
 
 
@@ -19,7 +20,9 @@ export default function CreateGroupFrom (){
         e.preventDefault()
 
         async function create(){
+            IsLoading.getState().isLoading(false)
             let create_group = await createGroup(groupName);        
+            IsLoading.getState().isLoading(false)
             type MsgType = "error"|"success"|"normal"
 
             slideMsg.getState().setSlideMsg({

@@ -41,9 +41,7 @@ export async function getUserGroups(){
         }
     }
     catch(e: any){
-        
         return null
-
     }
 }
 
@@ -70,9 +68,7 @@ export async function getUserSummary(){
         }
     }
     catch(e: any){
-        
         return null
-
     }
 }
 
@@ -83,7 +79,6 @@ export async function leaveGroup(groupCode:string){
 
         if(email)  {
             const response = (await leaveGroupApi(groupCode)).data;
-
             return{
                 msg: response.message,
                 msgType: "normal",
@@ -95,7 +90,6 @@ export async function leaveGroup(groupCode:string){
         }
 
     }catch(e:any){
-
         return{
            msg:e.response.data.message,
             msgType: "error",
@@ -113,7 +107,6 @@ export async function cancelGroupRequest(groupCode:string){
 
         if(email)  {
             const response = (await cancelGroupRequestApi(groupCode)).data;
-
             return{
                 msg: response.message,
                 msgType: "normal",
@@ -125,7 +118,6 @@ export async function cancelGroupRequest(groupCode:string){
         }
 
     }catch(e:any){
-
         return{
            msg:e.response.data.message,
             msgType: "error",

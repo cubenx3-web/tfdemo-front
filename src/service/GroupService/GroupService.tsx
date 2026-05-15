@@ -40,7 +40,6 @@ export async function createGroup(groupName:string){
 
         const decode = jwtDecode<tokenType>(response.data.token)
         isAdmin.getState().setIsAdmin(decode.admin)
-
         return {
             "msg": response.data.message,
             "msgType": "success",
@@ -48,7 +47,6 @@ export async function createGroup(groupName:string){
         }
 
     }catch(e:any){
-
         return {
             "msg":e.response.data.message,
             "msgType": "error",

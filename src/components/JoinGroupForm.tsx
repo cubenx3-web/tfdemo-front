@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react"
 import { joinGroup } from "../service/GroupService/GroupService";
 import { IoCloseCircle } from "react-icons/io5";
 import { confirmationState,  joinGroupFormState,  slideMsg } from "../store/ComponentState";
+import { IsLoading } from "../store/IsLoading";
 
 
 export default function JoinGroupForm(){
@@ -18,6 +19,9 @@ export default function JoinGroupForm(){
  
         
         async function confirm (){
+
+            IsLoading.getState().isLoading(true);
+
            (groupCode.trim() === "")? slideMsg.getState().setSlideMsg( {show:true, msg:"Enter Group Code", msgType:"error"} ) :null;
            let join = await joinGroup(groupCode)
            

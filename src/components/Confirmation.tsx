@@ -1,4 +1,5 @@
 import { confirmationState, slideMsg } from "../store/ComponentState";
+import { IsLoading } from "../store/IsLoading";
 
 
 
@@ -12,7 +13,9 @@ export default function Confirmation(){
         setConfirmationState({msg:"", showConfirm:false, onConfirm:()=>null}) 
     } 
     function confirm(){
+        IsLoading.getState().isLoading(true)
         onConfirm();
+        IsLoading.getState().isLoading(false)
         setConfirmationState({msg:"", showConfirm:false, onConfirm:()=>null}) 
     }
 

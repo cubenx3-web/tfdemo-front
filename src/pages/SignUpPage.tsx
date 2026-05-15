@@ -5,6 +5,7 @@ import { MdLockOutline, MdOutlineEmail, MdPassword } from "react-icons/md";
 import { useNavigate } from "react-router";
 import { signUpHandler } from "../service/SignUpHandler";
 import { slideMsg } from "../store/ComponentState";
+import { IsLoading } from "../store/IsLoading";
 
 function SignUpPage(){
 
@@ -39,6 +40,7 @@ function SignUpPage(){
     async function submitHandler(e: FormEvent){
         e.preventDefault();
 
+        IsLoading.getState().isLoading(false)
         const reg:any = (values.password === values.confirmPass && values.password.length >= 6 )? await signUpHandler({username:values.username, email:values.email, password:values.password}):null;
         
         (values.password.length < 6)? setSlideMsg( {show:true, msg:"Use at least 6 Characters", msgType:"error"} ): 
@@ -55,13 +57,13 @@ function SignUpPage(){
     return (
         <>
             {/* login page container */}
-                        <div className="flex flex-col relative gap-5 p-5 bg-slate-700/50 pb-5 pt-10 justify-center place-items-center rounded-xl">
+                        <div className="flex flex-col relative gap-5 p-5 bg-slate-700/50 pb-5  justify-center place-items-center rounded-xl">
 
-                            <div className="bg-slate-700 border-b-4 border border-t-slate-700 border-l-slate-700 border-r-slate-700 p-1 rounded-full absolute -top-10 text-indigo-400 shadow-lg  shadow-olive-1 ring-5 ring-slate-700">
-                                <BiUser size={65}/>
+                            <div className="bg-slate-700 border-b-4 border border-t-slate-700 border-l-slate-700 -my-5 border-r-slate-700 p-1 rounded-full -translate-y-1/2 text-indigo-400 shadow-lg  shadow-olive-1 ring-5 ring-slate-700">
+                                <BiUser size={65} className=""/>
                             </div>
 
-                            <h2 className=" font-semibold text-2xl text-indigo-400 text-center mt-10 underline underline-offset-1">Sign Up</h2>
+                            <h2 className=" font-semibold text-2xl text-indigo-400 text-center underline underline-offset-1">Sign Up</h2>
             
                             {/* Input */}
                             <form
