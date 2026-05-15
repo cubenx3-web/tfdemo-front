@@ -95,17 +95,17 @@ export default function GroupDashPage(){
     const {admin} = isAdmin();
 
     const headerElement = (
-        <div className="flex  place-items-center w-[45%] max-md:w-full max-md:text-sm justify-evenly space-x-1  ">
+        <div className="flex  place-items-center sm:w-[45%] max-md:w-full max-md:text-sm justify-evenly gap-1">
                     <div
                      onClick={()=>(setJoinGroupFormState({joinState:true}))}
-                     title="Join Group" className="flex flex-1 max-w-35 justify-center place-items-center bg-blue-400 hover:bg-blue-900 p-2 rounded gap-3 cursor-pointer">
+                     title="Join Group" className="flex flex-1 max-w-35 justify-center place-items-center bg-blue-400 hover:bg-blue-900 p-1 rounded gap-2 cursor-pointer">
                         <RiKey2Line />
                         Join 
                     </div>
 
                     <div
                         onClick={()=>(setGroupFormState({groupFormState:true}))} 
-                        title="Create Group" className={`flex flex-1 max-w-35 justify-center place-items-center bg-gray-400 hover:bg-gray-700 p-2 rounded gap-3 cursor-pointer ${(admin)?"hidden":""}`}>
+                        title="Create Group" className={`flex flex-1 max-w-35 justify-center place-items-center bg-gray-400 hover:bg-gray-700 p-1 rounded gap-2 cursor-pointer ${(admin)?"hidden":""}`}>
                         <MdOutlineGroupAdd />
                         Create 
                     </div>
@@ -145,14 +145,14 @@ export default function GroupDashPage(){
                             {/* JOINED GROUPS DISPLAY */}
                             <div className="bg-slate-500/50 text-white p-2 py-3 place-self-center w-[97%] rounded flex flex-col place-items-center relative">
                                 <div className="flex gap-9 w-full place-items-center px-2 mb-2">
-                                    <h1 className="font-bold  flex-2 ">Groups</h1>    
+                                    <h1 className="font-bold flex-1">Groups</h1>    
                                     {/* Search filter */}
-                                    <div className="flex flex-1 gap-2 ">
+                                    <div className="">
                                         <input type="text" 
                                                placeholder="Search..."
                                                onChange={searchHandler}
                                                value = {search}
-                                               className="flex text-sm bg-[#e5e2e2] text-black max-w-50 px-2 border-2 border-gray-300 rounded-lg h-7"
+                                               className="text-sm bg-[#e5e2e2] text-black text-center border-2 border-gray-300 rounded-lg "
                                         />
                                         
                                     </div>

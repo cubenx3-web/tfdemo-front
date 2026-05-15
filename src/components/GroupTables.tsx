@@ -114,7 +114,7 @@ export default function GroupTables({groups, waitingApproval, search}:{groups:Gr
                 <div className={`w-full  transition-all duration-700   ${(table===w)?"translate-x-0":"absolute translate-x-full opacity-0"}`}>
                     <table className="table-auto w-full bg-gray-100/20 rounded-lg overflow-auto ">
                         <thead>
-                            <tr className="border-white bg-slate-800/50 border-b-2 text-sm font-semibold">
+                            <tr className="border-white bg-slate-800/50 border-b-2 text-xs font-semibold">
                                 <th className="p-3 tracking-wide text-left w-10">No.</th>
                                 <th className="p-3 tracking-wide text-left">Name</th>
                                 <th className="p-3 tracking-wide text-left">Code</th>
